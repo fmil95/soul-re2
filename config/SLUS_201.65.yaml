@@ -1,0 +1,70 @@
+# Splat config for Legacy of Kain: Soul Reaver 2 (Jul 17, 2001 prototype) NTSC-U (PS2)
+name: "Legacy of Kain: Soul Reaver 2 (Jul 17, 2001 prototype)"
+sha1: 0cddcb744f7b8f21b8afb1a0493f27845562d770
+
+options:
+  basename: SLUS_201.65
+  target_path: disc/SLUS_201.65
+  elf_path: SLUS_201.65
+  base_path: ../
+  platform: ps2
+  compiler: EEGCC
+
+  # Output paths
+  asm_path: asm
+  src_path: src
+  build_path: obj
+
+  # Assembly options
+  generate_asm_macros_files: False
+  named_regs_for_c_funcs: False
+  find_file_boundaries: False
+  disasm_unknown: True
+
+  # Rodata options
+  rodata_string_guesser_level: 0 # improve string detection
+  suggestion_rodata_section_start: True
+  pair_rodata_to_text: False
+  migrate_rodata_to_functions: True
+
+  # Auto-generate undefined functions and symbols
+  create_undefined_funcs_auto: True
+  undefined_funcs_auto_path: config/undefined_funcs_auto.txt
+  create_undefined_syms_auto: True
+  undefined_syms_auto_path: config/undefined_syms_auto.txt
+
+  # Manually defined symbols
+  symbol_addrs_path: config/symbol_addrs.txt
+
+  # Splat extensions
+  extensions_path: tools/splat_ext
+
+  # ELF sections
+  section_order: [".text", ".vutext", ".data", ".rodata", ".lit4", ".sdata", ".sbss", ".bss"]
+  auto_link_sections: [".rodata", ".data", ".bss"]
+
+  # Linker script options
+  subalign: 8
+
+segments:
+  - [0x0, databin, elf_header]
+
+  - name: main
+    type: code
+    start: 0x001000
+    vram: 0x00100000
+    bss_size: 0x1bea3c0
+    subsegments:
+      - [0x001000, asm, text]             
+      - [0x103B58, textbin, text_nop]     
+      - [0x103B60, textbin, vutext]       
+      - [0x108B80, data, data]           
+      - [0x1B2D00, rodata, rodata]        
+      - [0x1BD1F8, rodatabin, ctors_dtors_frames]  
+      - { start: 0x1BD240, type: bss, vram: 0x002BC240, name: bss }
+
+  - name: elf_tail
+    type: databin
+    start: 0x1bd240
+
+  - [0x88A9FF]
