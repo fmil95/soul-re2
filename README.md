@@ -6,7 +6,7 @@
 
 This is a decompilation of Crystal Dynamics' 2001 stunning sequel to Soul Reaver. At the time of writing this, [the project for the first game](https://github.com/fmil95/soul-re) is nearing completion and thus it only makes sense to continue with the next game in the Legacy of Kain series. While this decomp was technically created in 2026, the first Soul Reaver 2 function [was decompiled in February 18, 2024](https://decomp.me/scratch/CUqSg), and the prototype that this project rebuilds has been investigated extensively for aiding with the SR1 decompilation, as both games share quite a bit of code.
 
-Unfortunately unlike the previous game, the retail release doesn't contain debug info, and the only prototype that does is the July 17 one which lags three months behind the final game. Thankfully it has a full set of STAB debugging symbols and certain files with -O1 compiled code, so the idea is to first decompile the prototype and then move on to the commercial version.
+Unfortunately unlike the previous game, the retail release doesn't contain debug info, and the only prototype that does is the July 17 one which lags three months behind the final game. Thankfully it has a full set of STAB debugging symbols, so the idea is to first decompile the prototype and then move on to the commercial version.
 
 Once the project is complete, there are plans to do a new version of Soul Reaver 2 restoring most of its excised content into its gameplay.
 
