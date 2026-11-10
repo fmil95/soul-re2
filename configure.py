@@ -34,7 +34,7 @@ G_OVERRIDES = {
 }
 
 O_OVERRIDES = {
-    "LIST.c": "-O1",
+    
 }
 
 SDK_ROOT = "include/sce/usr/local/sce"

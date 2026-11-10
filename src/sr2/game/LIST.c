@@ -10,32 +10,23 @@ void LIST_DeleteFunc(NodeType *node)
         {
             node->prev->next = node->next;
             node->next->prev = node->prev;
-
-            node->prev = NULL;
-            node->next = NULL;
-            return;
+            goto end;
         }
     }
     else if (node->next != NULL)
     {
         node->next->prev = NULL;
-        
-        node->prev = NULL;
-        node->next = NULL;
-        return;
+        goto end;
     }
-    
+
     if (node->prev != NULL)
     {
         node->prev->next = NULL;
-        node->prev = NULL;
     }
-    else
-    {
-        node->prev = NULL;
-    }
-    
+
+end:
     node->next = NULL;
+    node->prev = NULL;
 }
 
 INCLUDE_ASM("asm/nonmatchings/sr2/game/LIST", LIST_GetFunc);
