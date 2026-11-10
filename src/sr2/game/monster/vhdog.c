@@ -2,7 +2,7 @@
 /* Original path: C:\sr2\game\monster\vhdog.c */
 /* .data 0x002A5D20 */
 
-#include "common.h"
+#include "monster/vhdog.h"
 
 /* data 2a5d20 */ MonsterStateChoice VHDOG_StateChoiceTable[0];
 /* data 2a5d38 */ MonsterBehaviorChoice VHDOG_BehaviorChoiceTable[0];

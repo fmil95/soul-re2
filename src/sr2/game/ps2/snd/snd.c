@@ -1,34 +1,7 @@
 /* Original path: C:\sr2\game\ps2\snd\snd.c */
 /* .text 0x00106DE0, .data 0x00229CC0, .rodata 0x002B20F8, .bss 0x002BF340 */
 
-#include "common.h"
-
-/* Globals of this unit (STABS). Their storage is still in asm/data, hence extern. */
-/* data 229cc0 */ extern SRAMMEM *FirstSRAMMem;
-/* data 229cc4 */ extern SAMPLEMEM *FirstSampleMem;
-/* data 229cc8 */ extern SAMPLE *samplelist;
-/* data 229ccc */ extern SNDTIMERFUNC PS2SoundTimerFunc;
-/* data 229cd0 */ extern float freqmultiply;
-/* data 229cd4 */ extern int a64init;
-/* data 229cd8 */ extern int Core0ReverbType;
-/* data 229cdc */ extern int Core1ReverbType;
-/* data 229ce0 */ extern int batchindex;
-/* data 229ce4 */ extern int batchflipper;
-/* data 229ce8 */ extern sceSifClientData iopsnd0;
-/* bss 2bf340 */ extern SRAMMEM SRAMMemBlocks[2048];
-/* bss 2cd340 */ extern SAMPLEMEM SampleMemBlocks[2048];
-/* bss 2d7340 */ extern CHANNELINFO chans[48];
-/* bss 2d7e80 */ extern unsigned int SoundMemPtr;
-/* bss 2d7e84 */ extern SRAMChunk *SRAM;
-/* bss 2d7e88 */ extern int keyon[2];
-/* bss 2d7e90 */ extern int keyoff[2];
-/* bss 2d7e98 */ extern int reverb[2];
-/* bss 2d7ea0 */ extern int Reverb0Volume;
-/* bss 2d7ea4 */ extern int Reverb1Volume;
-/* data 229d40 */ extern int statusreturns[48];
-/* bss 2d7ec0 */ extern RemoteDataStruct RemoteData[2];
-/* bss 2d8f00 */ extern char testbuffer[32832];
-/* bss 2e0f40 */ extern SRAMChunk *scwalk;
+#include "ps2/snd/snd.h"
 
 // /* 00106de0 0000010c */ static void FlushBatch() {}
 INCLUDE_ASM("asm/nonmatchings/sr2/game/ps2/snd/snd", FlushBatch);
@@ -140,7 +113,7 @@ INCLUDE_ASM("asm/nonmatchings/sr2/game/ps2/snd/snd", SND_SetFrequencyMultiply);
 INCLUDE_ASM("asm/nonmatchings/sr2/game/ps2/snd/snd", SND_SetVolume);
 
 // /* 00107bc8 00000008 */ void SND_Set3DPosition(/* a0 4 */ int channum, /* f12 50 */ float xpos, /* f13 51 */ float ypos, /* f14 52 */ float zpos, /* f15 53 */ float maxdist) {}
-void SND_Set3DPosition(void) {
+void SND_Set3DPosition(int channum, float xpos, float ypos, float zpos, float maxdist) {
 }
 
 // /* 00107bd0 0000001c */ void SND_SetPriority(/* a0 4 */ int channum, /* a1 5 */ int priority) {}

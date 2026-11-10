@@ -2,11 +2,7 @@
 /* .text 0x00199FD8, .data 0x002A6030, .rodata 0x002B6780, .bss 0x01E97200 */
 /* Code from other files was inlined here: /sr2/game/ps2/transform.h, math3d.h, mempack.h */
 
-#include "common.h"
-
-/* Globals of this unit (STABS). Their storage is still in asm/data, hence extern. */
-/* data 2a6030 */ extern G2AnimSegValue *_segValues;
-/* bss 1e97200 */ extern G2AnimSegValue _segValuesStatic[128];
+#include "g2/InstncG2.h"
 
 // /* 00199fd8 000000e0 */ void G2Instance_BuildTransformsForList(/* s1 17 */ Instance *listHead) {
 //     /* s0 16 */ Instance *instance;

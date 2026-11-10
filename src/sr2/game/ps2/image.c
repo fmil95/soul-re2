@@ -1,7 +1,7 @@
 /* Original path: C:\sr2\game\ps2\image.c */
 /* .text 0x00169670 */
 
-#include "common.h"
+#include "ps2/image.h"
 
 // /* 00169670 00000024 */ static int log2(/* a0 4 */ int in) {
 //     /* v0 2 */ int count;

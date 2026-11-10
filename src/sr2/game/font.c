@@ -1,22 +1,7 @@
 /* Original path: C:\sr2\game\font.c */
 /* .text 0x00126FC0, .data 0x00256E90, .bss 0x0068E1A8 */
 
-#include "common.h"
-
-/* Globals of this unit (STABS). Their storage is still in asm/data, hence extern. */
-/* data 256e90 */ extern float cursorX;
-/* data 256e94 */ extern float cursorY;
-/* data 256e98 */ extern int curColorIndex;
-/* data 256e9c */ extern float curYScale;
-/* data 256ea0 */ extern TextEntry *entryList;
-/* data 256ea4 */ extern TextEntry *topEntry;
-/* data 256ea8 */ extern FontColor fontColors[7];
-/* data 256ec0 */ extern int curalpha;
-/* data 256ec4 */ extern float TargetXRes;
-/* data 256ec8 */ extern float TargetYRes;
-/* bss 68e1a8 */ extern char formattedMsg[1024];
-/* bss 68e5a8 */ extern char fontMem[16384];
-/* bss 6925a8 */ extern int curMemPtr;
+#include "font.h"
 
 // /* 00126fc0 00000044 */ static void* FONTMEM_Alloc(/* a0 4 */ int32 size) {}
 INCLUDE_ASM("asm/nonmatchings/sr2/game/font", FONTMEM_Alloc);

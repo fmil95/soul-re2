@@ -2,31 +2,7 @@
 /* .text 0x0019BF30, .data 0x002A6040, .rodata 0x002B6B10, .bss 0x01E99240 */
 /* Code from other files was inlined here: mempack.h */
 
-#include "common.h"
-
-/* Globals of this unit (STABS). Their storage is still in asm/data, hence extern. */
-/* data 2a6040 */ extern int32 gFrameBlendEnabled;
-/* data 2a6044 */ extern int32 gFrameBlendAlpha;
-/* data 2a6048 */ extern int32 gFrameBlendTimeout;
-/* data 2a604c */ extern float gFrameBlendAlphaStep;
-/* data 2a6050 */ extern sceDmaChan *dmaGif;
-/* data 2a6054 */ extern sceDmaChan *dmaFromIPU;
-/* data 2a6058 */ extern int PS2_fogstart;
-/* data 2a605c */ extern int PS2_fogend;
-/* data 2a6060 */ extern int PS2_fognear;
-/* data 2a6064 */ extern int PS2_fogfar;
-/* data 2a6068 */ extern int PS2_fogmult;
-/* data 2a606c */ extern int PS2_fogColorR;
-/* data 2a6070 */ extern int PS2_fogColorG;
-/* data 2a6074 */ extern int PS2_fogColorB;
-/* data 2a6078 */ extern int blitRed;
-/* data 2a607c */ extern int blitGreen;
-/* data 2a6080 */ extern int blitBlue;
-/* data 2a6090 */ extern Vector4f PS2_Fog;
-/* data 2a60a0 */ extern sceGsDispEnv disp_ps2;
-/* data 2a60c8 */ extern int32 gFrameBlendAlphaTarget;
-/* data 2a60cc */ extern float gFrameBlendAlphaf;
-/* bss 1e992c0 */ extern BackBufferCopy backBufferPacket;
+#include "ps2/ps2_g2/RenderRA.h"
 
 // /* 0019bf30 000001e4 */ static void InitBlit() {
 //     /* t8 24 */ int x;
@@ -50,7 +26,7 @@ INCLUDE_ASM("asm/nonmatchings/sr2/game/ps2/ps2_g2/RenderRA", Gs_Initialize);
 INCLUDE_ASM("asm/nonmatchings/sr2/game/ps2/ps2_g2/RenderRA", RenderG2_Init);
 
 // /* 0019c568 00000008 */ void RenderG2_ShutDown(/* a0 4 */ G2AppData *appData) {}
-void RenderG2_ShutDown(void) {
+void RenderG2_ShutDown(G2AppData *appData) {
 }
 
 // /* 0019c570 00000030 */ void RenderG2_GetBlitTag(/* a0 4 */ DmaTag *tag) {}

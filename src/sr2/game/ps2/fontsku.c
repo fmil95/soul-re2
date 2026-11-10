@@ -1,14 +1,7 @@
 /* Original path: C:\sr2\game\ps2\fontsku.c */
 /* .text 0x00127718, .data 0x00256ED0, .rodata 0x002B45D0, .bss 0x006925AC */
 
-#include "common.h"
-
-/* Globals of this unit (STABS). Their storage is still in asm/data, hence extern. */
-/* data 256ed0 */ extern uint32 font_tpageid;
-/* data 256ed4 */ extern uint32 textColor;
-/* data 256ed8 */ extern FontPos fontPos[0];
-/* bss 6925ac */ extern float targetXRes;
-/* bss 6925b0 */ extern float targetYRes;
+#include "ps2/fontsku.h"
 
 // /* 00127718 0000002c */ void FONTSKU_Init() {}
 INCLUDE_ASM("asm/nonmatchings/sr2/game/ps2/fontsku", FONTSKU_Init);

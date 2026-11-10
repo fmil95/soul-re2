@@ -2,7 +2,7 @@
 /* .text 0x0019B090, .rodata 0x002B67A8 */
 /* Code from other files was inlined here: math3d.h */
 
-#include "common.h"
+#include "g2/QuatG2.h"
 
 // /* 0019b090 00000220 */ void G2Quat_FromEulerf(/* s0 16 */ Vector4f *quat, /* a1 5 */ G2EulerAngles *euler) {
 //     /* f21 59 */ float ti;
@@ -100,7 +100,7 @@ INCLUDE_ASM("asm/nonmatchings/sr2/game/g2/QuatG2", G2Quat_ToMatrixf);
 INCLUDE_ASM("asm/nonmatchings/sr2/game/g2/QuatG2", G2Quat_Slerp);
 
 // /* 0019b678 00000008 */ void G2EulerAngles_ToMatrixf(/* a0 4 */ G2EulerAngles *euler, /* a1 5 */ float *matrix[4]) {}
-void G2EulerAngles_ToMatrixf(void) {
+void G2EulerAngles_ToMatrixf(G2EulerAngles *euler, float *matrix[4]) {
 }
 
 // /* 0019b680 000002dc */ void G2EulerAngles_FromMatrixf(/* s1 17 */ G2EulerAngles *euler, /* s3 19 */ float *matrix[4], /* s7 23 */ int32 order) {

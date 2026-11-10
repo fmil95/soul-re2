@@ -1,7 +1,7 @@
 /* Original path: C:\sr2\game\sound\sndapp.c */
 /* .text 0x001021C0 */
 
-#include "common.h"
+#include "sound/sndapp.h"
 
 // /* 001021c0 00000058 */ void SNDAPP_FailAbort(/* a0 4 */ char *fmt) {
 //     /* 0x0(sp) */ char error[256];

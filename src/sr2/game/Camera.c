@@ -2,14 +2,7 @@
 /* .text 0x0010F1C0, .data 0x0022CB40, .rodata 0x002B2C20, .bss 0x0030DFC0 */
 /* Code from other files was inlined here: /sr2/game/ps2/transform.h, collide.h, math3d.h */
 
-#include "common.h"
-
-/* Globals of this unit (STABS). Their storage is still in asm/data, hence extern. */
-/* data 22cb40 */ extern int32 oldgNewCombatCam;
-/* data 22cb60 */ extern Camera theCamera;
-/* bss 30dfc8 */ extern SVector camera_shakeOffset[16];
-/* bss 30e050 */ extern Vector4f CameraLine_startPt[5];
-/* bss 30e0a0 */ extern Vector4f CameraLine_endPt[5];
+#include "Camera.h"
 
 // /* 0010f1c0 0000038c */ void CAMERA_CalculateViewVolumeNormals(/* s0 16 */ Camera *camera) {
 //     /* 0x0(sp) */ Vector4f n0;

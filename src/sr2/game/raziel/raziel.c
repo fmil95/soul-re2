@@ -2,35 +2,7 @@
 /* .text 0x0019D808, .data 0x002A60D0, .rodata 0x002B6B20, .bss 0x01E999C0 */
 /* Code from other files was inlined here: /sr2/game/ps2/transform.h, math3d.h, raziel/algoctrl.c, raziel/attack.c, raziel/health.c, raziel/message.c, raziel/puppet.c, raziel/razdbug.c, raziel/razlib.c, raziel/senses.c, raziel/spider.c, raziel/steering.c, raziel/swim.c */
 
-#include "common.h"
-
-/* Globals of this unit (STABS). Their storage is still in asm/data, hence extern. */
-/* data 2a60d0 */ extern int LoopCounter;
-/* data 2a60d4 */ extern int WaterStatus;
-/* data 2a60d8 */ extern int gCowlHide;
-/* data 2a60e0 */ extern CannedSound cannedSound[4];
-/* data 2a6130 */ extern int BlockCount;
-/* data 2a6134 */ extern int LastBlock;
-/* data 2a6138 */ extern int autoFaceBlock;
-/* data 2a613c */ extern int switchDone;
-/* data 2a6140 */ extern int hitPosted;
-/* data 2a6144 */ extern int ZoneDelta;
-/* bss 1e999d0 */ extern Player Raziel;
-/* bss 1e9a4e0 */ extern RazielData *PlayerData;
-/* bss 1e9a4e8 */ extern G2AnimInterpInfo razInterpInfo[3];
-/* bss 1e9a518 */ extern FitPoint constrictData[128];
-/* bss 1e9a718 */ extern GameTracker *gameTracker;
-/* bss 1e9a71c */ extern int32 *PadData;
-/* bss 1e9a720 */ extern Vector4f ExtraRotData;
-/* bss 1e9a730 */ extern Vector4f *ExtraRot;
-/* data 2a614c */ extern int ControlFlag;
-/* bss 1e9a740 */ extern Force ExternalForces[4];
-/* bss 1e9a800 */ extern int PhysicsMode;
-/* bss 1e9a808 */ extern EngagedInstance EngagedList[19];
-/* bss 1e9a8a0 */ extern Normal Norm;
-/* data 2a6150 */ extern int AutoFaceAngle;
-/* bss 1e9a8a8 */ extern int pauseManualThrow;
-/* bss 1e9a8ac */ extern int LastRC;
+#include "raziel/raziel.h"
 
 // /* 0019d808 000001bc */ static void StateInitIdle(/* s2 18 */ CharacterState *In, /* s1 17 */ int CurrentSection, /* a2 6 */ int Ptr) {
 //     /* s0 16 */ evControlInitIdleData *data;
@@ -1221,11 +1193,11 @@ INCLUDE_ASM("asm/nonmatchings/sr2/game/raziel/raziel", razInitWallCrawlSteering)
 INCLUDE_ASM("asm/nonmatchings/sr2/game/raziel/raziel", razDeinitWallCrawlSteering);
 
 // /* 001b41c8 00000008 */ static void razShieldSteering(/* a0 4 */ Instance *instance) {}
-void razShieldSteering(void) {
+void razShieldSteering(Instance *instance) {
 }
 
 // /* 001b41d0 00000008 */ void DebugProcess(/* a0 4 */ Instance *instance, /* a1 5 */ Player *player) {}
-void DebugProcess(void) {
+void DebugProcess(Instance *instance, Player *player) {
 }
 
 // /* 001b41d8 00000264 */ void DebugDrawAutoFaceTrail() {
@@ -1872,11 +1844,11 @@ INCLUDE_ASM("asm/nonmatchings/sr2/game/raziel/raziel", razApplyMotion);
 INCLUDE_ASM("asm/nonmatchings/sr2/game/raziel/raziel", razResetMotion);
 
 // /* 001b93e0 00000008 */ void razSetOverlapTransOnRoot(/* a0 4 */ Instance *instance) {}
-void razSetOverlapTransOnRoot(void) {
+void razSetOverlapTransOnRoot(Instance *instance) {
 }
 
 // /* 001b93e8 00000008 */ void razResetOverlapTransOnRoot(/* a0 4 */ Instance *instance) {}
-void razResetOverlapTransOnRoot(void) {
+void razResetOverlapTransOnRoot(Instance *instance) {
 }
 
 // /* 001b93f0 00000040 */ void razSetDampingPhysics(/* a0 4 */ Instance *instance) {}

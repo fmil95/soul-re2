@@ -2,7 +2,7 @@
 /* Original path: C:\sr2\game\TABLES.C */
 /* .data 0x0025C840 */
 
-#include "common.h"
+#include "TABLES.h"
 
 /* data 25c840 */ Normal gNormalList[0];
 /* data 25d020 */ Vector4f gFloatNormalList[0];

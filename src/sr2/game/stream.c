@@ -2,12 +2,7 @@
 /* .text 0x0015F420, .data 0x0025C298, .rodata 0x002B5378 */
 /* Code from other files was inlined here: math3d.h */
 
-#include "common.h"
-
-/* Globals of this unit (STABS). Their storage is still in asm/data, hence extern. */
-/* data 25c340 */ extern STracker StreamTracker;
-/* data 25c5e8 */ extern char onlyMonsterArg[512];
-/* data 25c7e8 */ extern char *onlyMonsterList[20];
+#include "stream.h"
 
 // /* 0015f420 0000002c */ static void STREAM_FillOutVRAMName(/* v0 2 */ char *baseUnitName, /* a1 5 */ char *vramName) {}
 INCLUDE_ASM("asm/nonmatchings/sr2/game/stream", STREAM_FillOutVRAMName);
@@ -325,7 +320,7 @@ INCLUDE_ASM("asm/nonmatchings/sr2/game/stream", STREAM_UpdateObjectPointer);
 INCLUDE_ASM("asm/nonmatchings/sr2/game/stream", STREAM_UpdateInstanceCollisionInfo);
 
 // /* 001614a8 00000008 */ void STREAM_MoveObjectSoundPointers(/* a0 4 */ Object *oldObject, /* a1 5 */ int32 sizeOfObject, /* a2 6 */ int32 offset) {}
-void STREAM_MoveObjectSoundPointers(void) {
+void STREAM_MoveObjectSoundPointers(Object *oldObject, int32 sizeOfObject, int32 offset) {
 }
 
 // /* 001614b0 00000148 */ void STREAM_MoveIntoNewStreamUnit() {

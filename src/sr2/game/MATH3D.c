@@ -2,10 +2,7 @@
 /* .text 0x00141878, .data 0x0025B400 */
 /* Code from other files was inlined here: /sr2/game/ps2/transform.h, math3d.h */
 
-#include "common.h"
-
-/* Globals of this unit (STABS). Their storage is still in asm/data, hence extern. */
-/* data 25b400 */ extern uint32 gRndSeed;
+#include "MATH3D.h"
 
 // /* 00141878 0000007c */ void MATH3D_Sort3NormalCoords(/* a0 4 */ NormalCoord *a, /* a1 5 */ NormalCoord *b, /* a2 6 */ NormalCoord *c) {
 //     /* t0 8 */ NormalCoord a1;
@@ -239,7 +236,7 @@ INCLUDE_ASM("asm/nonmatchings/sr2/game/MATH3D", MATH3D_ConeDetectf);
 INCLUDE_ASM("asm/nonmatchings/sr2/game/MATH3D", MATH3D_AngleBetweenVectorsf);
 
 // /* 00142818 00000008 */ void MATH3D_RotMatAboutVecf(/* a0 4 */ Vector4f *vec, /* a1 5 */ float *mat[4], /* f12 50 */ float angle) {}
-void MATH3D_RotMatAboutVecf(void) {
+void MATH3D_RotMatAboutVecf(Vector4f *vec, float *mat[4], float angle) {
 }
 
 // /* 00142820 0000004c */ float MATH3D_PositiveAnglef(/* f12 50 */ float angle) {

@@ -1,14 +1,7 @@
 /* Original path: C:\sr2\game\local\localstr.c */
 /* .text 0x001C2D08, .data 0x002A6198, .rodata 0x002B7300, .bss 0x01E9AAD0 */
 
-#include "common.h"
-
-/* Globals of this unit (STABS). Their storage is still in asm/data, hence extern. */
-/* data 2a6198 */ extern LocalizationHeader *LocalizationTable;
-/* data 2a619c */ extern char **LocalStrings;
-/* data 2a61a8 */ extern char ActiveBuildDir[32];
-/* data 2a61c8 */ extern char ActiveBuildName[16];
-/* bss 1e9aad0 */ extern language_t the_language;
+#include "local/localstr.h"
 
 // /* 001c2d08 0000000c */ language_t localstr_get_language() {}
 INCLUDE_ASM("asm/nonmatchings/sr2/game/local/localstr", localstr_get_language);

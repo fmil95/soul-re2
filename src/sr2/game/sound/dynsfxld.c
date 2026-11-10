@@ -1,15 +1,7 @@
 /* Original path: C:\sr2\game\sound\dynsfxld.c */
 /* .text 0x00101AC8, .data 0x00207D30, .rodata 0x002B1E40, .bss 0x002BDA48 */
 
-#include "common.h"
-
-/* Globals of this unit (STABS). Their storage is still in asm/data, hence extern. */
-/* data 207d30 */ extern int currentlyLoadingSMF;
-/* data 207d34 */ extern int dumpCurrentLoad;
-/* data 207d38 */ extern int nextSfxFileHandle;
-/* data 207d40 */ extern AadLoadedSfxToneAttr sfxPCToneAttrTbl[1024];
-/* data 20cd40 */ extern AadLoadedSfxWaveAttr sfxPCWaveAttrTbl[512];
-/* bss 2bda48 */ extern AadDynSfxSnfFileHdr *firstDynSfxFile;
+#include "sound/dynsfxld.h"
 
 // /* 00101ac8 000000ec */ void DYNSFX_FreeDynamicSfx(/* a0 4 */ int handle) {
 //     /* s2 18 */ int i;

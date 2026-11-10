@@ -1,18 +1,7 @@
 /* Original path: C:\sr2\game\demo.c */
 /* .text 0x00122CF0, .data 0x002309E4, .rodata 0x002B4500, .bss 0x0030E0F0 */
 
-#include "common.h"
-
-/* Globals of this unit (STABS). Their storage is still in asm/data, hence extern. */
-/* data 2309e4 */ extern int gDemoRecord;
-/* data 2309e8 */ extern int gDemoPlay;
-/* data 2309ec */ extern int gDemoLoad;
-/* data 2309f0 */ extern int gDemoAbort;
-/* data 2309f4 */ extern int resetRand;
-/* data 2309f8 */ extern uint32 gDemoLastData;
-/* bss 30e0f0 */ extern RecordedDemo *demoRecording;
-/* bss 30e0f4 */ extern ControllerRecord *demoRecordingPtr;
-/* bss 30e0f8 */ extern int demoRecordingFrames;
+#include "demo.h"
 
 // /* 00122cf0 0000008c */ void DEMO_Init() {}
 INCLUDE_ASM("asm/nonmatchings/sr2/game/demo", DEMO_Init);

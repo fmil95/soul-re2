@@ -1,22 +1,7 @@
 /* Original path: C:\sr2\game\sound\dynsfx.c */
 /* .text 0x001000C0, .data 0x00207B80, .rodata 0x002B1D00, .bss 0x002BC388 */
 
-#include "common.h"
-
-/* Globals of this unit (STABS). Their storage is still in asm/data, hence extern. */
-/* data 207b80 */ extern int sfxMasterVol;
-/* data 207b88 */ extern void (*sfxCmdFunction[5])(/* parameters unknown */);
-/* data 207b9c */ extern int DYNSFX_UnloadedSounds;
-/* data 207ba0 */ extern int DYNSFX_ShowSRAMUsage;
-/* bss 2bc388 */ extern AadSynthVoice synthVoice[48];
-/* data 207ba8 */ extern AadSfxSlot sfxSlot;
-/* bss 2bd108 */ extern float ARTable1[128];
-/* bss 2bd308 */ extern float ARTable2[128];
-/* bss 2bd508 */ extern float SRTable1[128];
-/* bss 2bd708 */ extern float SRTable2[128];
-/* bss 2bd908 */ extern float DRTable[16];
-/* bss 2bd948 */ extern float RRTable1[32];
-/* bss 2bd9c8 */ extern float RRTable2[32];
+#include "sound/dynsfx.h"
 
 // /* 001000c0 000002c4 */ void DYNSFX_Init() {
 //     /* s0 16 */ int i;

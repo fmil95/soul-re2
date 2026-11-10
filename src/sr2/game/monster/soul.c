@@ -2,15 +2,7 @@
 /* .text 0x0018B778, .data 0x002A5630 */
 /* Code from other files was inlined here: math3d.h */
 
-#include "common.h"
-
-/* Globals of this unit (STABS). Their storage is still in asm/data, hence extern. */
-/* data 2a5630 */ extern MonsterStateChoice SOUL_StateChoiceTable[0];
-/* data 2a56a8 */ extern MonsterBehaviorChoice SOUL_BehaviorChoiceTable[0];
-/* data 2a5750 */ extern MonsterFunctionTable SOUL_FunctionTable;
-/* data 2a5788 */ extern MonsterStateChoice FREESOUL_StateChoiceTable[0];
-/* data 2a57b0 */ extern MonsterBehaviorChoice FREESOUL_BehaviorChoiceTable[0];
-/* data 2a57e0 */ extern MonsterFunctionTable FREESOUL_FunctionTable;
+#include "monster/soul.h"
 
 // /* 0018b778 000000b0 */ void SOUL_Fade(/* s0 16 */ Instance *instance) {
 //     /* s1 17 */ MonsterVars *mv;

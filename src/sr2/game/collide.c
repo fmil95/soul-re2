@@ -2,21 +2,7 @@
 /* .text 0x00118690, .data 0x0022D660 */
 /* Code from other files was inlined here: /sr2/game/ps2/transform.h, collide.h, math3d.h, mempack.h, types.h */
 
-#include "common.h"
-
-/* Globals of this unit (STABS). Their storage is still in asm/data, hence extern. */
-/* data 22d660 */ extern int32 dyna_clddyna[8];
-/* data 22d680 */ extern int32 stat_clddyna[8];
-/* data 22d6a0 */ extern int32 dyna_cldstat[8];
-/* data 22d6c0 */ extern int32 collide_ignoreAttr;
-/* data 22d6c4 */ extern int32 collide_acceptAttr;
-/* data 22d6c8 */ extern Matrixf *collide_lwTransform;
-/* data 22d6cc */ extern Vector4f *collide_point0;
-/* data 22d6d0 */ extern Vector4f *collide_point1;
-/* data 22d6d4 */ extern Vector4f *collide_normal0;
-/* data 22d6d8 */ extern Vector4f *collide_normal1;
-/* data 22d6dc */ extern float collide_t0;
-/* data 22d6e0 */ extern float collide_t1;
+#include "collide.h"
 
 // /* 00118690 000001dc */ int COLLIDE_PointInTrianglef(/* a0 4 */ Vector4f *v0, /* a1 5 */ Vector4f *v1, /* a2 6 */ Vector4f *v2, /* a3 7 */ Vector4f *point, /* t0 8 */ Vector4f *normal) {
 //     /* 0x0(sp) */ Triangle2Dc triangle;

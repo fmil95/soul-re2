@@ -1,13 +1,7 @@
 /* Original path: C:\sr2\game\reloc.c */
 /* .text 0x00169E20, .rodata 0x002B5BE0, .bss 0x01E94CC8 */
 
-#include "common.h"
-
-/* Globals of this unit (STABS). Their storage is still in asm/data, hence extern. */
-/* bss 1e94cc8 */ extern uint32 lastHighAdj[16];
-/* bss 1e94d08 */ extern int usedHighAdj[16];
-/* bss 1e94d48 */ extern char *data;
-/* bss 1e94d4c */ extern char *curptr;
+#include "reloc.h"
 
 // /* 00169e20 00000044 */ static void seek(/* a2 6 */ int offset, /* a1 5 */ int type) {}
 INCLUDE_ASM("asm/nonmatchings/sr2/game/reloc", seek);

@@ -2,7 +2,7 @@
 /* .text 0x0014F1D0 */
 /* Code from other files was inlined here: /sr2/game/ps2/transform.h, fx.h, math3d.h, mempack.h, ps2/drawlist.h, ps2/ps2dma.h, types.h */
 
-#include "common.h"
+#include "ps2/ps2fxdraw.h"
 
 // /* 0014f1d0 0000010c */ void FXDRAW_DrawScreenPoly(/* t2 10 */ int transtype, /* t1 9 */ uint32 color, /* a2 6 */ int zdepth) {
 //     /* 0x0(sp) */ MYPS2VERTEX verts[4];

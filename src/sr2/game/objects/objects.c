@@ -2,7 +2,7 @@
 /* .text 0x001CAAB0, .data 0x002A66B0, .rodata 0x002B7C40 */
 /* Code from other files was inlined here: /sr2/game/ps2/transform.h, collide.h, math3d.h, objects/animated.c, objects/armor.c, objects/blocks.c, objects/collectibles.c, objects/interacts.c, objects/mswitches.c, objects/projectiles.c, objects/puzzle.c, objects/switches.c, objects/weapons.c */
 
-#include "common.h"
+#include "objects/objects.h"
 
 // /* 001caab0 000001c4 */ void BLOCK_Init(/* s2 18 */ Instance *instance, /* a1 5 */ GameTracker *gameTracker) {
 //     {
@@ -1105,7 +1105,7 @@ INCLUDE_ASM("asm/nonmatchings/sr2/game/objects/objects", OBJ_CheckFamily);
 INCLUDE_ASM("asm/nonmatchings/sr2/game/objects/objects", OBJ_CheckAbility);
 
 // /* 001d4d90 00000008 */ static void OBJ_ReportInvalidObject(/* a0 4 */ Instance *instance, /* a1 5 */ int32 version, /* a2 6 */ int32 propVersion) {}
-void OBJ_ReportInvalidObject(void) {
+void OBJ_ReportInvalidObject(Instance *instance, int32 version, int32 propVersion) {
 }
 
 // /* 001d4d98 00000044 */ static int32 OBJ_AnimCallback(/* a0 4 */ G2Anim *anim, /* a1 5 */ G2AnimSectionID sectionID, /* a2 6 */ G2AnimCallbackMsg message, /* a3 7 */ int32 messageDataA, /* t0 8 */ int32 messageDataB, /* t1 9 */ void *data) {

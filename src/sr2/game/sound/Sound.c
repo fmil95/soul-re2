@@ -2,19 +2,7 @@
 /* .text 0x00157B28, .data 0x0025BFF0, .rodata 0x002B5250, .bss 0x01E92B98 */
 /* Code from other files was inlined here: math3d.h */
 
-#include "common.h"
-
-/* Globals of this unit (STABS). Their storage is still in asm/data, hence extern. */
-/* data 25bff0 */ extern int32 musicDebug;
-/* data 25bff4 */ extern float musUpdateDelta;
-/* data 25bff8 */ extern int gDisableDistanceAttenuation;
-/* data 25bffc */ extern int underWater;
-/* data 25c000 */ extern int32 objectOneShotTriggerTbl[3];
-/* data 25c018 */ extern char debugMusicName[32];
-/* bss 1e92ba0 */ extern int32 sfxReverbVolume;
-/* bss 1e92ba4 */ extern int32 sfxReverbType;
-/* data 25c038 */ extern SoundEffectChannel soundEffectChannelTbl[16];
-/* bss 1e92ba8 */ extern Instance *SoundMicInstance;
+#include "sound/Sound.h"
 
 // /* 00157b28 00000048 */ SoundEffectChannel* SndOpenSfxChannel(/* a0 4 */ uint8 *channelNum) {
 //     /* a1 5 */ int i;
@@ -270,7 +258,7 @@ INCLUDE_ASM("asm/nonmatchings/sr2/game/sound/Sound", MUS_AsyncLoadingBlockCallba
 INCLUDE_ASM("asm/nonmatchings/sr2/game/sound/Sound", MUS_AsyncLoadingAfterBlockCallback);
 
 // /* 0015a0c8 00000008 */ void MUS_AsyncLoadingCancelCallback(/* a0 4 */ FILEREQUEST *filereq) {}
-void MUS_AsyncLoadingCancelCallback(void) {
+void MUS_AsyncLoadingCancelCallback(FILEREQUEST *filereq) {
 }
 
 // /* 0015a0d0 000000f4 */ static void StartMusicLoad(/* s0 16 */ MUS_LoadingVars *vars, /* s3 19 */ char *musicName, /* s4 20 */ int instantStart) {}
@@ -394,7 +382,7 @@ INCLUDE_ASM("asm/nonmatchings/sr2/game/sound/Sound", SndUpdateVolPan);
 INCLUDE_ASM("asm/nonmatchings/sr2/game/sound/Sound", SndUpdateVolPanPitch);
 
 // /* 0015aba0 00000008 */ void SOUND_PlaneShift(/* a0 4 */ int newPlane) {}
-void SOUND_PlaneShift(void) {
+void SOUND_PlaneShift(int newPlane) {
 }
 
 // /* 0015aba8 0000000c */ void SOUND_SetMicInstance(/* a0 4 */ Instance *inst) {}

@@ -2,16 +2,7 @@
 /* .text 0x00163C30, .data 0x0025E000, .rodata 0x002B5740, .bss 0x01E94C50 */
 /* Code from other files was inlined here: ps2/drawlist.h, ps2/ps2dma.h */
 
-#include "common.h"
-
-/* Globals of this unit (STABS). Their storage is still in asm/data, hence extern. */
-/* data 25e000 */ extern int gUseMipMap;
-/* data 25e004 */ extern int gMipMapK;
-/* data 25e008 */ extern VramTracker textureTracker[512];
-/* data 264080 */ extern uint16 clutData[512][256];
-/* data 2a4080 */ extern int gCurVRAMPtr;
-/* bss 1e94c50 */ extern int gFirstEmptyTexture;
-/* data 2a4084 */ extern int gNumLoadedTextures;
+#include "ps2/vram.h"
 
 // /* 00163c30 00000038 */ int VRAM_FindTextureInCache(/* a0 4 */ int textureID) {
 //     /* v1 3 */ int i;

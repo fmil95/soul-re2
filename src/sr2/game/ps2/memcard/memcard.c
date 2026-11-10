@@ -1,18 +1,7 @@
 /* Original path: C:\sr2\game\ps2\memcard\memcard.c */
 /* .text 0x001C8790, .data 0x002A65E8, .rodata 0x002B7890, .bss 0x01E9B308 */
 
-#include "common.h"
-
-/* Globals of this unit (STABS). Their storage is still in asm/data, hence extern. */
-/* data 2a65e8 */ extern int mcport;
-/* data 2a65ec */ extern int mcslot;
-/* data 2a65f0 */ extern unsigned char *iconName[3];
-/* data 2a6600 */ extern short unsigned int ascii_special[33][2];
-/* data 2a6688 */ extern short unsigned int ascii_table[3][2];
-/* data 2a6698 */ extern localstr_t save_name[0];
-/* data 2a66a8 */ extern int frame;
-/* bss 1e9b308 */ extern char dirBaseName[20];
-/* bss 1e9b31c */ extern int gMemcardSaveSize;
+#include "ps2/memcard/memcard.h"
 
 // /* 001c8790 0000010c */ uint16 Ascii2Sjis(/* a2 6 */ unsigned char ascii_code) {
 //     /* v0 2 */ uint16 sjis_code;
@@ -113,7 +102,7 @@ INCLUDE_ASM("asm/nonmatchings/sr2/game/ps2/memcard/memcard", MEMCARD_WriteIcon);
 INCLUDE_ASM("asm/nonmatchings/sr2/game/ps2/memcard/memcard", MEMCARD_Init);
 
 // /* 001c9318 00000008 */ void MEMCARD_DisplayInfo(/* a0 4 */ MemCardInfo *mcard) {}
-void MEMCARD_DisplayInfo(void) {
+void MEMCARD_DisplayInfo(MemCardInfo *mcard) {
 }
 
 INCLUDE_RODATA("asm/nonmatchings/sr2/game/ps2/memcard/memcard", D_002B7AE0);

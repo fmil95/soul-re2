@@ -1,7 +1,7 @@
 /* Original path: C:\sr2\game\menu\menudefs.c */
 /* .text 0x001C76F8, .rodata 0x002B77C0, .bss 0x01E9B304 */
 
-#include "common.h"
+#include "menu/menudefs.h"
 
 // /* 001c76f8 00000054 */ void do_check_controller() {}
 INCLUDE_ASM("asm/nonmatchings/sr2/game/menu/menudefs", do_check_controller);

@@ -2,18 +2,7 @@
 /* .text 0x00167AE8, .data 0x002A4280 */
 /* Code from other files was inlined here: /sr2/game/ps2/transform.h, math3d.h */
 
-#include "common.h"
-
-/* Globals of this unit (STABS). Their storage is still in asm/data, hence extern. */
-/* data 2a4298 */ extern float TRANS_XScale;
-/* data 2a429c */ extern float TRANS_YScale;
-/* data 2a42a0 */ extern float TRANS_ZScale;
-/* data 2a42b0 */ extern Matrixf TRANS_Matrix;
-/* data 2a42f0 */ extern Matrixf TRANS_lightmat;
-/* data 2a4330 */ extern Matrixf viewClipMatrix;
-/* data 2a4370 */ extern Matrixf masterClipMatrix;
-/* data 2a43b0 */ extern float VU_ZScale;
-/* data 2a43c0 */ extern Matrixf view_screen;
+#include "ps2/transform.h"
 
 // /* 00167ae8 00000014 */ void TRANS_LoadVUMatrix(/* a0 4 */ float *mat[4]) {}
 INCLUDE_ASM("asm/nonmatchings/sr2/game/ps2/transform", TRANS_LoadVUMatrix);

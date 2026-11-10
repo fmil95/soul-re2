@@ -2,6 +2,6 @@
 /* Original path: C:\sr2\game\obtable2.c */
 /* .data 0x0025BC20, .rodata 0x002B5020 */
 
-#include "common.h"
+#include "obtable2.h"
 
 /* data 25bc20 */ ObjectFunc objectFunc[0];

@@ -2,47 +2,7 @@
 /* .text 0x00127AD8, .data 0x00257C40, .rodata 0x002B45E0, .bss 0x006925B8 */
 /* Code from other files was inlined here: /sr2/game/ps2/transform.h, collide.h, fx.h, math3d.h */
 
-#include "common.h"
-
-/* Globals of this unit (STABS). Their storage is still in asm/data, hence extern. */
-/* data 257c40 */ extern FXGeneralEffect *FX_GeneralEffectTracker;
-/* data 257c44 */ extern FXRibbon *FX_ConstrictRibbon;
-/* data 257c48 */ extern int16 FX_ConstrictStage;
-/* data 257c4c */ extern Instance *FX_ConstrictInstance;
-/* data 257c50 */ extern int32 snow_amount;
-/* data 257c54 */ extern int32 rain_amount;
-/* data 257c58 */ extern int32 current_rain_fade;
-/* data 257c5c */ extern Level *FX_PlayerLevel;
-/* data 257c60 */ extern void *FX_SoundStream;
-/* data 257c64 */ extern int FX_Weather_Lightning;
-/* data 257c68 */ extern int FX_Weather_Lightning_Intensity;
-/* data 257c6c */ extern int FX_Weather_Lightning_Fog;
-/* data 257c70 */ extern int FX_Weather_Lightning_On;
-/* data 257c74 */ extern int FX_Weather_Lightning_Frame;
-/* data 257c78 */ extern int FX_Weather_Lightning_Countdown;
-/* data 257c7c */ extern int FX_FootDown;
-/* data 257c80 */ extern int FX_LastFootTime;
-/* data 257c84 */ extern int FX_Wetprint;
-/* data 257c88 */ extern int FX_Active_Snow_Prims;
-/* data 257c8c */ extern int FX_Active_Rain_Prims;
-/* data 257c90 */ extern float FX_windx;
-/* data 257c94 */ extern float FX_windy;
-/* data 257c98 */ extern float FX_wind_speed;
-/* data 257c9c */ extern int16 FX_wind_deg;
-/* data 257ca8 */ extern short int FXLightningFogArray1[0];
-/* data 257cf8 */ extern int32 FX_ColorArray[6];
-/* data 257d18 */ extern int32 FX_Frames;
-/* data 257d1c */ extern int32 FX_Frames60;
-/* data 257d40 */ extern WeatherPrim weatherprims[512];
-/* bss 6925b8 */ extern Position FX_ConstrictPosition;
-/* bss 6925c0 */ extern Position *FX_ConstrictPositionPtr;
-/* bss 6925c4 */ extern FX_PRIM *FX_LastUsedPrim;
-/* data 259d40 */ extern int32 FX_TimeCount;
-/* data 259d44 */ extern int32 FX_Frames2;
-/* data 259d48 */ extern int32 FX_TimeCount2;
-/* data 259d4c */ extern int32 FX_TimeCount60;
-/* data 259d80 */ extern FX_PRIM_PROCESS *fxprim_process_funcs[1024];
-/* data 25ad80 */ extern uint32 weatherprimFree[16];
+#include "fx.h"
 
 // /* 00127ad8 00000220 */ void FX_Init(/* s3 19 */ FXTracker *fxTracker) {
 //     /* s1 17 */ FX_MATRIX *fxMatrix;

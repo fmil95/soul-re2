@@ -2,7 +2,7 @@
 /* .text 0x0018E3C0, .rodata 0x002B6730 */
 /* Code from other files was inlined here: math3d.h */
 
-#include "common.h"
+#include "monster/monsterb.h"
 
 // /* 0018e3c0 00000068 */ void MON_SetCurrentBehaviorData(/* a0 4 */ Instance *instance, /* a1 5 */ int32 behaviorIdleIdx, /* a2 6 */ int32 senseIdx) {
 //     /* a3 7 */ MonsterVars *mv;

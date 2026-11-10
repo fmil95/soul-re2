@@ -2,7 +2,7 @@
 /* .text 0x001C13D8, .rodata 0x002B7208 */
 /* Code from other files was inlined here: math3d.h */
 
-#include "common.h"
+#include "undrwrld.h"
 
 // /* 001c13d8 00000078 */ void UNDERWORLD_StartProcess(/* s0 16 */ char *baseAreaName) {}
 INCLUDE_ASM("asm/nonmatchings/sr2/game/undrwrld", UNDERWORLD_StartProcess);

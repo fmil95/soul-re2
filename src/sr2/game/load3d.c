@@ -1,14 +1,7 @@
 /* Original path: C:\sr2\game\load3d.c */
 /* .text 0x0016A8D8, .data 0x002A4400, .rodata 0x002B5CC0, .bss 0x01E94D50 */
 
-#include "common.h"
-
-/* Globals of this unit (STABS). Their storage is still in asm/data, hence extern. */
-/* data 2a4400 */ extern int nextLoad;
-/* data 2a4408 */ extern char HashExtensions[8][4];
-/* bss 1e94d50 */ extern LoadStatus loadStatus;
-/* data 2a4428 */ extern int bigfileid;
-/* bss 1e94d60 */ extern LoadInfo scheduledLoads[64];
+#include "load3d.h"
 
 // /* 0016a8d8 00000010 */ static void StreamloadCallback(/* a0 4 */ void *buffer, /* a1 5 */ int size, /* a2 6 */ void *i) {
 //     /* a2 6 */ LoadInfo *info;
@@ -90,7 +83,7 @@ INCLUDE_ASM("asm/nonmatchings/sr2/game/load3d", LOAD_ReadFile);
 INCLUDE_ASM("asm/nonmatchings/sr2/game/load3d", LOAD_OpenFileForInfo);
 
 // /* 0016b148 00000008 */ void LOAD_CloseFileFromInfo(/* a0 4 */ FileInfo *fi) {}
-void LOAD_CloseFileFromInfo(void) {
+void LOAD_CloseFileFromInfo(FileInfo *fi) {
 }
 
 // /* 0016b150 00000030 */ int LOAD_FileSize(/* a0 4 */ char *filename) {}

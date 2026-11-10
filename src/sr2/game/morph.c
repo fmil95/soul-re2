@@ -2,13 +2,7 @@
 /* .text 0x0016B528, .data 0x002A4430 */
 /* Code from other files was inlined here: /sr2/game/ps2/transform.h, collide.h, math3d.h */
 
-#include "common.h"
-
-/* Globals of this unit (STABS). Their storage is still in asm/data, hence extern. */
-/* data 2a4430 */ extern TFace *MORPH_SavedFace;
-/* data 2a4434 */ extern Level *MORPH_SavedLevel;
-/* data 2a4438 */ extern int16 MORPH_Component[3];
-/* data 2a4440 */ extern int16 MORPH_Track[2];
+#include "morph.h"
 
 // /* 0016b528 00000144 */ void MORPH_SetupInstanceFlags(/* s0 16 */ Instance *instance) {}
 INCLUDE_ASM("asm/nonmatchings/sr2/game/morph", MORPH_SetupInstanceFlags);

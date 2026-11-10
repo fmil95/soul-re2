@@ -1,20 +1,7 @@
 /* Original path: C:\sr2\game\Gameloop.c */
 /* .text 0x00135930, .data 0x0025ADC0, .rodata 0x002B4818, .bss 0x006925C8 */
 
-#include "common.h"
-
-/* Globals of this unit (STABS). Their storage is still in asm/data, hence extern. */
-/* data 25adc0 */ extern int32 cameraMode;
-/* data 25adc4 */ extern int32 playerCameraMode;
-/* data 25adc8 */ extern int64 currentTicks;
-/* data 25ae7c */ extern FXTracker *gFXT;
-/* bss 6925c8 */ extern InstanceList *instanceList;
-/* bss 6925cc */ extern InstancePool *instancePool;
-/* bss 6925d0 */ extern VertexPool *gVertexPool;
-/* bss 6925d8 */ extern Matrixf *gMatrixPool[2];
-/* data 25ae80 */ extern FXTracker *fxTracker;
-/* bss 6925e0 */ extern ObjectTracker *GlobalObjects;
-/* bss 6925e4 */ extern Instance *loadingInstance;
+#include "Gameloop.h"
 
 // /* 00135930 000000d0 */ static void GAMELOOP_AllocStaticMemory() {}
 INCLUDE_ASM("asm/nonmatchings/sr2/game/Gameloop", GAMELOOP_AllocStaticMemory);
@@ -40,7 +27,7 @@ INCLUDE_ASM("asm/nonmatchings/sr2/game/Gameloop", GAMELOOP_LoadingDisplayProcess
 INCLUDE_ASM("asm/nonmatchings/sr2/game/Gameloop", GAMELOOP_LoadingDisplayQuery);
 
 // /* 00135bd8 00000008 */ void GAMELOOP_LoadingDisplayPost(/* a0 4 */ Instance *instance, /* a1 5 */ uint32 message, /* a2 6 */ uint32 data) {}
-void GAMELOOP_LoadingDisplayPost(void) {
+void GAMELOOP_LoadingDisplayPost(Instance *instance, uint32 message, uint32 data) {
 }
 
 // /* 00135be0 000001c0 */ void GAMELOOP_InitLoadingDisplay() {}

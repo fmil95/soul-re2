@@ -2,34 +2,7 @@
 /* .text 0x00138BC0, .data 0x0025AEB0, .rodata 0x002B4950, .bss 0x006928E0 */
 /* Code from other files was inlined here: /sr2/game/ps2/transform.h */
 
-#include "common.h"
-
-/* Globals of this unit (STABS). Their storage is still in asm/data, hence extern. */
-/* data 25aeb0 */ extern short int fx_going;
-/* data 25aeb4 */ extern FXBlastringEffect *fx_blastring;
-/* data 25aeb8 */ extern short int HUD_Captured;
-/* bss 6928e0 */ extern short int MANNA_Position;
-/* bss 6928e2 */ extern short int MANNA_Pos_vel;
-/* bss 6928e4 */ extern float glyph_time;
-/* bss 6928e8 */ extern short int glyph_trigger;
-/* bss 6928ea */ extern short int glyph_cost;
-/* bss 6928ec */ extern Instance *glyphInstance;
-/* bss 6928f0 */ extern short int HUD_Count;
-/* bss 6928f2 */ extern short int HUD_Count_Overall;
-/* bss 6928f4 */ extern int blast_range;
-/* bss 6928f8 */ extern int fx_radius_old;
-/* bss 6928fc */ extern float MANNA_Pickup_Time;
-/* bss 692900 */ extern short int HUD_Rotation;
-/* bss 692902 */ extern short int HUD_Rot_vel;
-/* bss 692904 */ extern short int HUD_Position;
-/* bss 692906 */ extern short int HUD_Pos_vel;
-/* bss 692908 */ extern short int HUD_State;
-/* bss 69290a */ extern short int HUD_Wait;
-/* bss 692910 */ extern Vector4f HUD_Cap_Pos;
-/* bss 692920 */ extern Vector4f HUD_Cap_Vel;
-/* bss 692930 */ extern int warpDraw;
-/* bss 692934 */ extern int glowdeg;
-/* data 25aebc */ extern int hud_warp_arrow_flash;
+#include "glyph.h"
 
 // /* 00138bc0 00000170 */ void CriticalDampValueS(/* a0 4 */ int32 dampMode, /* a1 5 */ int16 *sourceVal, /* a2 6 */ int16 targetVal, /* a3 7 */ int16 *vel, /* t0 8 */ int16 *accl, /* t1 9 */ int16 smooth) {
 //     /* t1 9 */ int16 maxVel;
@@ -43,7 +16,7 @@ INCLUDE_ASM("asm/nonmatchings/sr2/game/glyph", CriticalDampValueS);
 INCLUDE_ASM("asm/nonmatchings/sr2/game/glyph", GlyphInit);
 
 // /* 00138e60 00000008 */ void GlyphCollide(/* a0 4 */ Instance *instance, /* a1 5 */ GameTracker *gameTracker) {}
-void GlyphCollide(void) {
+void GlyphCollide(Instance *instance, GameTracker *gameTracker) {
 }
 
 // /* 00138e68 00000068 */ void GlyphProcess(/* s0 16 */ Instance *instance, /* a1 5 */ GameTracker *gameTracker) {

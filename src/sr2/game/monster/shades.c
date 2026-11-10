@@ -2,12 +2,7 @@
 /* .text 0x00192018, .data 0x002A5B80 */
 /* Code from other files was inlined here: /sr2/game/ps2/transform.h, math3d.h */
 
-#include "common.h"
-
-/* Globals of this unit (STABS). Their storage is still in asm/data, hence extern. */
-/* data 2a5b80 */ extern MonsterStateChoice SHADES_StateChoiceTable[0];
-/* data 2a5c60 */ extern MonsterBehaviorChoice SHADES_BehaviorChoiceTable[0];
-/* data 2a5cd8 */ extern MonsterFunctionTable SHADES_FunctionTable;
+#include "monster/shades.h"
 
 // /* 00192018 00000098 */ void SHADES_EnableFlyIn(/* s1 17 */ Instance *instance) {
 //     /* s0 16 */ MonsterVars *mv;
@@ -32,11 +27,11 @@ INCLUDE_ASM("asm/nonmatchings/sr2/game/monster/shades", SHADES_CleanUp);
 INCLUDE_ASM("asm/nonmatchings/sr2/game/monster/shades", SHADES_SetPieceHandler);
 
 // /* 001921d8 00000008 */ void SHADES_DefaultDamageEffect(/* a0 4 */ Instance *instance, /* a1 5 */ evFXHitData *data) {}
-void SHADES_DefaultDamageEffect(void) {
+void SHADES_DefaultDamageEffect(Instance *instance, evFXHitData *data) {
 }
 
 // /* 001921e0 00000008 */ void SHADES_DefaultPerFrameDamageEffect(/* a0 4 */ Instance *instance) {}
-void SHADES_DefaultPerFrameDamageEffect(void) {
+void SHADES_DefaultPerFrameDamageEffect(Instance *instance) {
 }
 
 // /* 001921e8 00000050 */ uint32 SHADES_Query(/* a0 4 */ Instance *instance, /* a1 5 */ uint32 query) {

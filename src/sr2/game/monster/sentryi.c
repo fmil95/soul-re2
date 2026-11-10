@@ -2,12 +2,7 @@
 /* .text 0x00190830, .data 0x002A5998 */
 /* Code from other files was inlined here: /sr2/game/ps2/transform.h, math3d.h */
 
-#include "common.h"
-
-/* Globals of this unit (STABS). Their storage is still in asm/data, hence extern. */
-/* data 2a5998 */ extern MonsterStateChoice SENTRYI_StateChoiceTable[0];
-/* data 2a5a38 */ extern MonsterBehaviorChoice SENTRYI_BehaviorChoiceTable[0];
-/* data 2a5b40 */ extern MonsterFunctionTable SENTRYI_FunctionTable;
+#include "monster/sentryi.h"
 
 // /* 00190830 000000ac */ uint32 SENTRYI_AimCallback(/* a0 4 */ G2AnimController *controller, /* a1 5 */ G2AnimSegValue *segValue, /* s0 16 */ float *parentMatrix[4], /* s1 17 */ float *segMatrix[4], /* t0 8 */ void *voiddata) {
 //     /* a2 6 */ MonsterVars *mv;
@@ -102,11 +97,11 @@ INCLUDE_ASM("asm/nonmatchings/sr2/game/monster/sentryi", SENTRYI_Query);
 INCLUDE_ASM("asm/nonmatchings/sr2/game/monster/sentryi", SENTRYI_BehaviorStack);
 
 // /* 00190f78 00000008 */ void SENTRYI_DamageEffect(/* a0 4 */ Instance *instance, /* a1 5 */ evFXHitData *data) {}
-void SENTRYI_DamageEffect(void) {
+void SENTRYI_DamageEffect(Instance *instance, evFXHitData *data) {
 }
 
 // /* 00190f80 00000008 */ void SENTRYI_PerFrameDamageEffect(/* a0 4 */ Instance *instance) {}
-void SENTRYI_PerFrameDamageEffect(void) {
+void SENTRYI_PerFrameDamageEffect(Instance *instance) {
 }
 
 // /* 00190f88 00000070 */ int32 SENTRYI_DoNothingInSpectralBehaviorShouldRun(/* s0 16 */ Instance *instance, /* a1 5 */ int32 *params) {}
@@ -253,11 +248,11 @@ INCLUDE_ASM("asm/nonmatchings/sr2/game/monster/sentryi", SENTRYI_MoveEye);
 INCLUDE_ASM("asm/nonmatchings/sr2/game/monster/sentryi", SENTRYI_MoveEyeExit);
 
 // /* 00191a48 00000008 */ void SENTRYI_EnableAim(/* a0 4 */ Instance *instance) {}
-void SENTRYI_EnableAim(void) {
+void SENTRYI_EnableAim(Instance *instance) {
 }
 
 // /* 00191a50 00000008 */ void SENTRYI_DisableAim(/* a0 4 */ Instance *instance) {}
-void SENTRYI_DisableAim(void) {
+void SENTRYI_DisableAim(Instance *instance) {
 }
 
 // /* 00191a58 00000030 */ void SENTRYI_CenterEye(/* a0 4 */ Instance *instance) {}

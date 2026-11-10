@@ -1,11 +1,7 @@
 /* Original path: C:\sr2\game\map.c */
 /* .text 0x0016E4A8, .data 0x002A4460, .rodata 0x002B5E18, .bss 0x01E97190 */
 
-#include "common.h"
-
-/* Globals of this unit (STABS). Their storage is still in asm/data, hence extern. */
-/* data 2a4460 */ extern MapInfo mapData[13];
-/* bss 1e97190 */ extern int gBackgroundIndex;
+#include "map.h"
 
 // /* 0016e4a8 000000f0 */ void MAP_MatchColors(/* a0 4 */ IMAGEHANDLE image) {
 //     /* v1 3 */ int i;

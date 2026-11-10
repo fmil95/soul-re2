@@ -2,12 +2,7 @@
 /* .text 0x001230E8, .data 0x00230A00 */
 /* Code from other files was inlined here: /sr2/game/ps2/transform.h, ps2/drawlist.h, types.h */
 
-#include "common.h"
-
-/* Globals of this unit (STABS). Their storage is still in asm/data, hence extern. */
-/* data 230a00 */ extern int BSPMorphValue;
-/* data 230a08 */ extern VisibleSphere sphereArray[1536];
-/* data 236a08 */ extern int numSpheres;
+#include "ps2/draw.h"
 
 // /* 001230e8 000000f0 */ void DRAW_DrawLines(/* s1 17 */ LINEVERTEX *lineverts, /* s0 16 */ int numlines) {
 //     /* s3 19 */ int i;
@@ -170,19 +165,19 @@ INCLUDE_ASM("asm/nonmatchings/sr2/game/ps2/draw", MarkOctreeSphereVisible);
 INCLUDE_ASM("asm/nonmatchings/sr2/game/ps2/draw", DRAW_DrawTerrainGroup);
 
 // /* 00123fb8 00000008 */ void DRAW_PrepareAreaForDraw(/* a0 4 */ Level *level) {}
-void DRAW_PrepareAreaForDraw(void) {
+void DRAW_PrepareAreaForDraw(Level *level) {
 }
 
 // /* 00123fc0 00000008 */ void DRAW_PrepareObjectForDraw(/* a0 4 */ Object *object) {}
-void DRAW_PrepareObjectForDraw(void) {
+void DRAW_PrepareObjectForDraw(Object *object) {
 }
 
 // /* 00123fc8 00000008 */ void DRAW_ReleaseObject(/* a0 4 */ Object *object) {}
-void DRAW_ReleaseObject(void) {
+void DRAW_ReleaseObject(Object *object) {
 }
 
 // /* 00123fd0 00000008 */ void DRAW_ReleaseArea(/* a0 4 */ Level *level) {}
-void DRAW_ReleaseArea(void) {
+void DRAW_ReleaseArea(Level *level) {
 }
 
 // /* 00123fd8 00000008 */ void DRAW_Init() {}

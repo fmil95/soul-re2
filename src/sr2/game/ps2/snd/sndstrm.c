@@ -1,18 +1,7 @@
 /* Original path: C:\sr2\game\ps2\snd\sndstrm.c */
 /* .text 0x001088D0, .data 0x00229E00, .rodata 0x002B2430, .bss 0x002E0F50 */
 
-#include "common.h"
-
-/* Globals of this unit (STABS). Their storage is still in asm/data, hence extern. */
-/* data 229e00 */ extern int g_curBufSize;
-/* data 229e04 */ extern STREAMMEM *FirstStreamMem;
-/* data 229e08 */ extern sceSifClientData iopsndstrm0;
-/* bss 2e0f50 */ extern RPC_StreamUpload RPC_upload;
-/* bss 2e0fa0 */ extern RPC_StreamUpdateData RPC_updateData;
-/* bss 2e0fd0 */ extern RPC_StreamFirstData RPC_firstData;
-/* bss 2e1040 */ extern STREAMMEM StreamMemBlocks[8];
-/* bss 2e1780 */ extern char *iopAddr;
-/* bss 2e1790 */ extern STRHEADER strHeader;
+#include "ps2/snd/sndstrm.h"
 
 // /* 001088d0 000000e8 */ static SOUNDSTREAM* AllocStream() {
 //     /* v1 3 */ STREAMMEM *sm;

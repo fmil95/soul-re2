@@ -1,13 +1,7 @@
 /* Original path: C:\sr2\game\monster\montable.c */
 /* .text 0x001891E0, .data 0x002A4C38 */
 
-#include "common.h"
-
-/* Globals of this unit (STABS). Their storage is still in asm/data, hence extern. */
-// /* data 2a4c38 */ static struct { // 0x8
-/* data 2a4cb0 */ extern MonsterFunctionTable DefaultFunctionTable;
-/* data 2a4ce8 */ extern MonsterStateFuncs DefaultStateTable[0];
-/* data 2a51e8 */ extern MonsterBehaviorFuncs DefaultBehaviorTable[0];
+#include "monster/montable.h"
 
 // /* 001891e0 00000044 */ void MONTABLE_SetupTablePointer(/* a0 4 */ Object *object) {
 //     /* a1 5 */ int32 whatAmI;

@@ -2,25 +2,7 @@
 /* .text 0x0016D160, .data 0x002A4444, .rodata 0x002B5E00, .bss 0x01E96860 */
 /* Code from other files was inlined here: fx.h, mempack.h */
 
-#include "common.h"
-
-/* Globals of this unit (STABS). Their storage is still in asm/data, hence extern. */
-/* data 2a4444 */ extern int16 Spiral_Number;
-/* data 2a4446 */ extern int16 Spiral_Degrees;
-/* data 2a4448 */ extern int32 Spiral_Current;
-/* data 2a444c */ extern int32 Spiral_Max;
-/* data 2a4450 */ extern float RvrMeter_Current;
-/* data 2a4454 */ extern float RvrMeter_Max;
-/* bss 1e96860 */ extern int Spiral_Glow_X;
-/* bss 1e96864 */ extern int Spiral_Glow_Y;
-/* bss 1e96868 */ extern int Spiral_Glow_Size;
-/* bss 1e9686c */ extern int Spiral_Mod;
-/* bss 1e96870 */ extern DWVECTOR RvrMeter_Array[33];
-/* bss 1e96978 */ extern DWVECTOR RvrMeter_OffsetP[33];
-/* bss 1e96a80 */ extern DWVECTOR RvrMeter_OffsetM[33];
-/* bss 1e96b88 */ extern DWVECTOR Spiral_Array[65];
-/* bss 1e96d90 */ extern DWVECTOR Spiral_OffsetP[64];
-/* bss 1e96f90 */ extern DWVECTOR Spiral_OffsetM[64];
+#include "spiral.h"
 
 // /* 0016d160 0000010c */ static void FX_GetSpiralPoint(/* f20 58 */ float radius, /* f21 59 */ float deg, /* s0 16 */ int *x, /* s1 17 */ int *y) {
 //     /* f1 39 */ float prevx;

@@ -1,27 +1,7 @@
 /* Original path: C:\sr2\game\ps2\asyncld.c */
 /* .text 0x00109D20, .data 0x00229E30, .rodata 0x002B2640, .bss 0x002E17C0 */
 
-#include "common.h"
-
-/* Globals of this unit (STABS). Their storage is still in asm/data, hence extern. */
-/* data 229e30 */ extern int gCompressed;
-/* data 229e34 */ extern int whichStreamBuf;
-/* data 229e38 */ extern int streamSize;
-/* bss 2e17c0 */ extern FILEREQUEST requests[256];
-/* bss 2edbc0 */ extern FILEREQUEST *freeList;
-/* bss 2edbc4 */ extern FILEREQUEST *reqListCurrent;
-/* bss 2edbc8 */ extern int abortflag;
-/* data 229e3c */ extern int SuperSlowLoads;
-/* data 229e40 */ extern int ASLD_Debug;
-/* data 229e44 */ extern int curOffset;
-/* bss 2edbcc */ extern FILEREQUEST *busycr;
-/* bss 2edbd0 */ extern uint8 *bufPtr;
-/* bss 2edbd4 */ extern uint8 *streamBuf;
-/* bss 2edc00 */ extern uint8 streamDB[2][65536];
-/* data 229e48 */ extern ASLDBLOCKCALLBACK blockCallback;
-/* data 229e4c */ extern void *blockCallbackInfo;
-/* data 229e50 */ extern ASLDCANCELCALLBACK cancelCallback;
-/* data 229e54 */ extern char *gFileName;
+#include "ps2/asyncld.h"
 
 // /* 00109d20 0000004c */ static void InitRequests() {
 //     /* a0 4 */ int i;
@@ -68,7 +48,7 @@ INCLUDE_ASM("asm/nonmatchings/sr2/game/ps2/asyncld", PoolRequest);
 INCLUDE_ASM("asm/nonmatchings/sr2/game/ps2/asyncld", SynchronousCallback);
 
 // /* 00109ff0 00000008 */ static void SynchronousCallbackDummy(/* a0 4 */ void *data, /* a1 5 */ int nBytes, /* a2 6 */ void *context) {}
-void SynchronousCallbackDummy(void) {
+void SynchronousCallbackDummy(void *data, int nBytes, void *context) {
 }
 
 // /* 00109ff8 00000478 */ static void FileLoadFunction() {

@@ -1,11 +1,7 @@
 /* Original path: C:\sr2\game\ps2\ps2_g2\MainVM.c */
 /* .text 0x0019B980, .rodata 0x002B67B8, .bss 0x01E99200 */
 
-#include "common.h"
-
-/* Globals of this unit (STABS). Their storage is still in asm/data, hence extern. */
-/* data 202b58 */ extern uint64 pad_nop;
-/* bss 1e99200 */ extern G2AppDataVM _appDataVM;
+#include "ps2/ps2_g2/MainVM.h"
 
 // /* 0019b980 00000128 */ void PrintDefs() {
 //     /* a1 5 */ unsigned int a;

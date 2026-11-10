@@ -1,13 +1,7 @@
 /* Original path: C:\sr2\game\MEMPACK.C */
 /* .text 0x00143490, .data 0x0025B408, .rodata 0x002B4D60, .bss 0x00692940 */
 
-#include "common.h"
-
-/* Globals of this unit (STABS). Their storage is still in asm/data, hence extern. */
-/* data 25b408 */ extern int8 MemoryTypeNames[59][32];
-/* data 25bb68 */ extern int gScratchStack;
-/* bss 692940 */ extern MemTracker memTracker;
-/* bss 692980 */ extern uint8 _memBlock[25165824];
+#include "MEMPACK.h"
 
 // /* 00143490 00000048 */ void MEMPACK_Init() {}
 INCLUDE_ASM("asm/nonmatchings/sr2/game/MEMPACK", MEMPACK_Init);

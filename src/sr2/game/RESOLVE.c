@@ -1,7 +1,7 @@
 /* Original path: C:\sr2\game\RESOLVE.C */
 /* .text 0x00155970, .rodata 0x002B51B0 */
 
-#include "common.h"
+#include "RESOLVE.h"
 
 // /* 00155970 000001d4 */ static void* RESOLVE_Pointers(/* s1 17 */ BlockList *srcBlockList, /* s2 18 */ int8 *baseAddr, /* s6 22 */ int memType) {
 //     /* s0 16 */ int i;

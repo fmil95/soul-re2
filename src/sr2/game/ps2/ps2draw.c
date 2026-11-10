@@ -2,10 +2,7 @@
 /* .text 0x00149EC0, .data 0x0025BD30, .rodata 0x002B5080 */
 /* Code from other files was inlined here: /sr2/game/ps2/transform.h, fx.h, math3d.h, mempack.h, ps2/drawlist.h, ps2/ps2dma.h */
 
-#include "common.h"
-
-/* Globals of this unit (STABS). Their storage is still in asm/data, hence extern. */
-/* data 25bd30 */ extern Matrixf cmSelfIlluminated;
+#include "ps2/ps2draw.h"
 
 // /* 00149ec0 000002a4 */ void DRAW_AddZSortedDrawItemFaster(/* t1 9 */ int texture, /* t6 14 */ void *data, /* a2 6 */ int32 z, /* a3 7 */ int32 attr, /* t0 8 */ void *nextTag) {
 //     /* t2 10 */ ZBucket *zbucket;
@@ -322,7 +319,7 @@ INCLUDE_ASM("asm/nonmatchings/sr2/game/ps2/ps2draw", PS2_DrawTerrainStripNew);
 INCLUDE_ASM("asm/nonmatchings/sr2/game/ps2/ps2draw", PS2_SwapVertexColors);
 
 // /* 0014c240 00000008 */ void PS2_DrawZSortObjectStrip(/* a0 4 */ TextureStripInfo *textureStrip, /* f12 50 */ float close_q, /* a1 5 */ int fadeValue, /* a2 6 */ Matrixf *matrices, /* a3 7 */ Matrixf *cm) {}
-void PS2_DrawZSortObjectStrip(void) {
+void PS2_DrawZSortObjectStrip(TextureStripInfo *textureStrip, float close_q, int fadeValue, Matrixf *matrices, Matrixf *cm) {
 }
 
 // /* 0014c248 000001fc */ void PS2_Split_AddTri(/* s3 19 */ int32 tex, /* s0 16 */ MYPS2VERTEX *verts, /* s4 20 */ int z, /* s5 21 */ int attr, /* t0 8 */ int clipflag) {

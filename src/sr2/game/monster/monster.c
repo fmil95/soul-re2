@@ -2,7 +2,7 @@
 /* .text 0x00181A00, .rodata 0x002B65F0 */
 /* Code from other files was inlined here: collide.h, math3d.h */
 
-#include "common.h"
+#include "monster/monster.h"
 
 // /* 00181a00 000001ac */ void MON_DefaultInit(/* s1 17 */ Instance *instance) {
 //     /* s2 18 */ MonsterAttributes *ma;

@@ -2,11 +2,7 @@
 /* .text 0x001D86A0, .data 0x002A6720, .rodata 0x002B8A00 */
 /* Code from other files was inlined here: mempack.h, ps2/drawlist.h */
 
-#include "common.h"
-
-/* Globals of this unit (STABS). Their storage is still in asm/data, hence extern. */
-/* data 2a6720 */ extern uint64 anTerminator[0];
-/* data 2a6730 */ extern uint64 *pnVolumeList;
+#include "ps2/ps2shadow.h"
 
 // /* 001d86a0 00000110 */ static void PS2Shadow_calculateMatrix(/* a0 4 */ float *matrix) {
 //     /* 0x0(sp) */ Matrixf tTemp;

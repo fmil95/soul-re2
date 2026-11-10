@@ -2,12 +2,7 @@
 /* .text 0x0010CB98, .data 0x0022CA90 */
 /* Code from other files was inlined here: math3d.h */
 
-#include "common.h"
-
-/* Globals of this unit (STABS). Their storage is still in asm/data, hence extern. */
-/* data 22ca90 */ extern int globalBendTime;
-/* data 22ca94 */ extern int globalBendMode;
-/* data 22caa0 */ extern Vector4f globalBend[8];
+#include "terrain.h"
 
 // /* 0010cb98 000001d4 */ void TERRAIN_CommonRenderLevel(/* s5 21 */ StreamUnit *currentUnit) {
 //     /* v1 3 */ Level *level;

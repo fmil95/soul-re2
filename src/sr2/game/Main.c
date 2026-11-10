@@ -2,26 +2,7 @@
 /* .text 0x0010AF20, .data 0x00229E60, .rodata 0x002B2800, .bss 0x0030DC00 */
 /* Code from other files was inlined here: math3d.h */
 
-#include "common.h"
-
-/* Globals of this unit (STABS). Their storage is still in asm/data, hence extern. */
-/* data 229e60 */ extern int nosound;
-/* data 229e64 */ extern int nomusic;
-/* data 229e68 */ extern int spectralStart;
-/* data 229e70 */ extern InterfaceItem InterfaceItems[6];
-/* data 229ff0 */ extern int32 DoMainMenu;
-/* data 229ff4 */ extern int32 mainMenuMode;
-/* data 229ff8 */ extern int32 *controlsScreen;
-/* data 229ffc */ extern int16 mainMenuFadeInTime;
-/* data 229ffe */ extern int16 mainMenuFading;
-/* data 22a000 */ extern int gReaverDiags;
-/* data 22a004 */ extern int gUseRealFont;
-/* data 22a008 */ extern int gDebugHealthOn;
-/* data 22a00c */ extern int32 gTextureArtistSwitch;
-/* data 22a020 */ extern GameTracker gameTrackerX;
-/* data 22a260 */ extern MainTracker mainTrackerX;
-/* bss 30de08 */ extern char startUnit[32];
-/* bss 30de28 */ extern int mainMenuSfx;
+#include "Main.h"
 
 // /* 0010af20 00000010 */ void InitMainTracker(/* a0 4 */ MainTracker *mainTracker) {}
 INCLUDE_ASM("asm/nonmatchings/sr2/game/Main", InitMainTracker);

@@ -2,117 +2,7 @@
 /* .text 0x00120B38, .data 0x0022D6E8, .rodata 0x002B2CA0 */
 /* Code from other files was inlined here: /sr2/game/ps2/transform.h, math3d.h */
 
-#include "common.h"
-
-/* Globals of this unit (STABS). Their storage is still in asm/data, hence extern. */
-/* data 22d6e8 */ extern char pauseFormatString[20];
-/* data 22d700 */ extern char mainFormatString[20];
-/* data 22d714 */ extern int32 gRenderShadow;
-/* data 22d718 */ extern int32 gDebugPS2Stats;
-/* data 22d71c */ extern int32 gDebug_mipmap_load_savings;
-/* data 22d720 */ extern int32 gDebug_mipmap_zsort_savings;
-/* data 22d724 */ extern int32 gDebugColorStrips;
-/* data 22d728 */ extern int32 gVertigo;
-/* data 22d72c */ extern int32 menuPauseSel;
-/* data 22d730 */ extern int32 debug_cameraMode;
-/* data 22d734 */ extern int32 debugVoiceIndex;
-/* data 22d738 */ extern uint32 debugTimeMult;
-/* data 22d73c */ extern int32 debugFogFar;
-/* data 22d740 */ extern int32 debugFogNear;
-/* data 22d744 */ extern int32 debugGameTime;
-/* data 22d748 */ extern int32 debugFogRed;
-/* data 22d74c */ extern int32 debugFogGrn;
-/* data 22d750 */ extern int32 debugFogBlu;
-/* data 22d754 */ extern int32 debugHealthLevel;
-/* data 22d758 */ extern int32 debugManaLevel;
-/* data 22d75c */ extern int32 gNewCombatCam;
-/* data 22d760 */ extern DebugMenuLine standardMenu[0];
-/* data 22d910 */ extern DebugMenuLine statsMenu[0];
-/* data 22d9a0 */ extern DebugMenuLine saveMenu[0];
-/* data 22da00 */ extern DebugMenuLine eventMenu[0];
-/* data 22daa8 */ extern DebugMenuLine fogMenu[0];
-/* data 22db68 */ extern DebugMenuLine goodiesMenu[0];
-/* data 22dcb8 */ extern DebugMenuLine musicSelectMenu[0];
-/* data 22dd30 */ extern DebugMenuLine debugSoundMenu[0];
-/* data 22de80 */ extern DebugMenuLine drawFlagsMenu[0];
-/* data 22e000 */ extern DebugMenuLine debugRazielMenu[0];
-/* data 22e0f0 */ extern DebugMenuLine debugHealthSystemMenu[0];
-/* data 22e1e0 */ extern DebugMenuLine debugSpecialAbilitiesMenu[0];
-/* data 22e300 */ extern DebugMenuLine debugForgedAbilitiesMenu[0];
-/* data 22e438 */ extern DebugMenuLine debugGlyphAbilitiesMenu[0];
-/* data 22e5a0 */ extern DebugMenuLine debugImbueSoulReaverMenu[0];
-/* data 22e6d8 */ extern DebugMenuLine debugDebugRazielMenu[0];
-/* data 22e798 */ extern DebugMenuLine cheatsMenu[0];
-/* data 22e810 */ extern DebugMenuLine optsMenu[0];
-/* data 22e978 */ extern DebugMenuLine gpadConfigMenu[0];
-/* data 22e9d8 */ extern DebugMenuLine keybConfigMenu[0];
-/* data 22ea38 */ extern DebugMenuLine demoMenu[0];
-/* data 22eaf8 */ extern DebugMenuLine newCombatCamMenu[0];
-/* data 22eb70 */ extern DebugMenuLine cameraMenu[0];
-/* data 22eca8 */ extern DebugMenuLine AIMenu[0];
-/* data 22ede0 */ extern DebugMenuLine PushMenu[0];
-/* data 22eee8 */ extern DebugMenuLine DemoAreaMenu[0];
-/* data 22efd8 */ extern DebugMenuLine MovieAreaMenu[0];
-/* data 22f098 */ extern DebugMenuLine DarkAreaMenu[0];
-/* data 22f1d0 */ extern DebugMenuLine PillarsAreaMenu[0];
-/* data 22f320 */ extern DebugMenuLine PillarsBAreaMenu[0];
-/* data 22f470 */ extern DebugMenuLine PillarsCAreaMenu[0];
-/* data 22f5c0 */ extern DebugMenuLine LightAreaMenu[0];
-/* data 22f6f8 */ extern DebugMenuLine StrongAreaMenu[0];
-/* data 22f818 */ extern DebugMenuLine StrongBAreaMenu[0];
-/* data 22f938 */ extern DebugMenuLine StrongCAreaMenu[0];
-/* data 22fa58 */ extern DebugMenuLine FireAreaMenu[0];
-/* data 22fad0 */ extern DebugMenuLine TSDAreaMenu[0];
-/* data 22fb30 */ extern DebugMenuLine SwampAreaMenu[0];
-/* data 22fbf0 */ extern DebugMenuLine SwampBAreaMenu[0];
-/* data 22fcb0 */ extern DebugMenuLine SwampCAreaMenu[0];
-/* data 22fd70 */ extern DebugMenuLine LakeAreaMenu[0];
-/* data 22fe00 */ extern DebugMenuLine LakeBAreaMenu[0];
-/* data 22fe90 */ extern DebugMenuLine LakeCAreaMenu[0];
-/* data 22ff20 */ extern DebugMenuLine JanosAreaMenu[0];
-/* data 230088 */ extern DebugMenuLine JanosBAreaMenu[0];
-/* data 230220 */ extern DebugMenuLine AirAreaMenu[0];
-/* data 2303b8 */ extern DebugMenuLine levelSelectMenu[0];
-/* data 230610 */ extern DebugMenuLine pauseMenu[0];
-/* data 2306b8 */ extern DebugMenuLine mainMenu[0];
-/* data 230778 */ extern int PS2_profiling_on;
-/* data 23077c */ extern DebugMenuLine *debugCurrentMenu;
-/* data 230780 */ extern int32 debugMenuChoice;
-/* data 230784 */ extern int32 cheatCodeLastCommand;
-/* data 230788 */ extern int32 CheatKeyMap[10];
-/* data 2307b0 */ extern GameCheat GameCheats[23];
-/* data 230920 */ extern DebugMenuLine *the_previous_menu;
-/* data 230928 */ extern debug_dispatch_t debug_dispatch_table[0];
-/* data 230978 */ extern int32 gDebugParticleCount;
-/* data 23097c */ extern uint32 debugRazielFlags1;
-/* data 230980 */ extern uint32 debugRazielFlags2;
-/* data 230984 */ extern uint32 debugRazielFlags3;
-/* data 230988 */ extern uint32 debugRazielFlags4;
-/* data 23098c */ extern int32 debugRazielSlipSlope;
-/* data 230990 */ extern int32 gDebugSoundTimer;
-/* data 230994 */ extern int32 gDebugCpuTime;
-/* data 230998 */ extern int32 gDebugVramSize;
-/* data 23099c */ extern int32 gDebugVramLoadedSize;
-/* data 2309a0 */ extern int32 gDebugVramZSortSize;
-/* data 2309a4 */ extern int32 gDebugDMASize;
-/* data 2309a8 */ extern int32 gDebugStripDMASize;
-/* data 2309ac */ extern int32 gDebugFXDMASize;
-/* data 2309b0 */ extern int32 gDebugTextures;
-/* data 2309b4 */ extern int32 gDebugItems;
-/* data 2309b8 */ extern int32 gDebugStripVertices;
-/* data 2309bc */ extern int32 gDebugStrips;
-/* data 2309c0 */ extern int32 gDebugTerrainStripVertices;
-/* data 2309c4 */ extern int32 gDebugTerrainStrips;
-/* data 2309c8 */ extern int32 gDebugVIFTime;
-/* data 2309cc */ extern int32 gDebugGIFTime;
-/* data 2309d0 */ extern int32 gDebugBlitTime;
-/* data 2309d4 */ extern int32 gDebugDrawListUsedMem;
-/* data 2309d8 */ extern int16 debugOrgFogFar;
-/* data 2309da */ extern int16 debugOrgFogNear;
-/* data 2309dc */ extern uint8 debugOrgFogRed;
-/* data 2309dd */ extern uint8 debugOrgFogGrn;
-/* data 2309de */ extern uint8 debugOrgFogBlu;
-/* data 2309e0 */ extern int32 debugInstanceStats;
+#include "debug.h"
 
 // /* 00120b38 00000018 */ static void DEBUG_StreamUnitsInfo() {
 //     /* v0 2 */ int i;
@@ -1119,7 +1009,7 @@ INCLUDE_ASM("asm/nonmatchings/sr2/game/debug", DEBUG_MusicSelectNew);
 INCLUDE_ASM("asm/nonmatchings/sr2/game/debug", DEBUG_FatalError);
 
 // /* 00122368 00000008 */ void DEBUG_ProcessSecondController(/* a0 4 */ GameTracker *gameTracker) {}
-void DEBUG_ProcessSecondController(void) {
+void DEBUG_ProcessSecondController(GameTracker *gameTracker) {
 }
 
 // /* 00122370 000001e4 */ void DEBUG_ProcessCheat(/* s1 17 */ GameTracker *gameTracker) {
@@ -1169,7 +1059,7 @@ INCLUDE_ASM("asm/nonmatchings/sr2/game/debug", DEBUG_Draw);
 INCLUDE_ASM("asm/nonmatchings/sr2/game/debug", DEBUG_DisplayStatus);
 
 // /* 00122af8 00000008 */ void DEBUG_DrawLine(/* a0 4 */ int32 r, /* a1 5 */ int32 g, /* a2 6 */ int32 b, /* f12 50 */ float x0, /* f13 51 */ float y0, /* f14 52 */ float z0, /* f15 53 */ float x1, /* f16 54 */ float y1, /* f17 55 */ float z1) {}
-void DEBUG_DrawLine(void) {
+void DEBUG_DrawLine(int32 r, int32 g, int32 b, float x0, float y0, float z0, float x1, float y1, float z1) {
 }
 
 // /* 00122b00 00000008 */ void DEBUG_DrawLineQueue() {}
@@ -1177,7 +1067,7 @@ void DEBUG_DrawLineQueue(void) {
 }
 
 // /* 00122b08 00000008 */ void DEBUG_DrawScreenRect(/* a0 4 */ int32 r, /* a1 5 */ int32 g, /* a2 6 */ int32 b, /* f12 50 */ float x, /* f13 51 */ float y, /* f14 52 */ float w, /* f15 53 */ float h) {}
-void DEBUG_DrawScreenRect(void) {
+void DEBUG_DrawScreenRect(int32 r, int32 g, int32 b, float x, float y, float w, float h) {
 }
 
 // /* 00122b10 00000008 */ void DEBUG_DrawRectQueue() {}

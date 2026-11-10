@@ -1,10 +1,7 @@
 /* Original path: C:\sr2\game\OBTABLE.C */
 /* .text 0x00143A10, .data 0x0025BB70, .rodata 0x002B4DB0 */
 
-#include "common.h"
-
-/* Globals of this unit (STABS). Their storage is still in asm/data, hence extern. */
-/* data 25bb70 */ extern ObjectAccess objectAccess[0];
+#include "OBTABLE.h"
 
 // /* 00143a10 000000f8 */ void OBTABLE_InstanceInit(/* s0 16 */ Instance *instance) {
 //     /* s1 17 */ int32 id;

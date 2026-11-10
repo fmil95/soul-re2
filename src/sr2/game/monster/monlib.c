@@ -2,10 +2,7 @@
 /* .text 0x00174688, .data 0x002A4B58, .rodata 0x002B6040 */
 /* Code from other files was inlined here: /sr2/game/ps2/transform.h, math3d.h */
 
-#include "common.h"
-
-/* Globals of this unit (STABS). Their storage is still in asm/data, hence extern. */
-/* data 2a4b88 */ extern burntTuneType burntTest;
+#include "monster/monlib.h"
 
 // /* 00174688 00000018 */ void MON_SwitchState(/* a0 4 */ Instance *instance, /* a1 5 */ MonsterState state) {
 //     /* v1 3 */ MonsterVars *mv;

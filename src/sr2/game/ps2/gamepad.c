@@ -1,27 +1,7 @@
 /* Original path: C:\sr2\game\ps2\gamepad.c */
 /* .text 0x00137880, .data 0x0025AE88, .rodata 0x002B48B0, .bss 0x00692600 */
 
-#include "common.h"
-
-/* Globals of this unit (STABS). Their storage is still in asm/data, hence extern. */
-/* data 25ae88 */ extern int gamePadControllerOut;
-/* data 25ae8c */ extern int dualShock;
-/* data 25ae90 */ extern int16 dualshock_onflag;
-/* data 25ae98 */ extern int16 reinit_flag[2];
-/* data 25ae9c */ extern int gpSaved;
-/* data 25aea0 */ extern uint16 lastData[2];
-/* data 25aea8 */ extern uint16 lastDataSave[2];
-/* bss 692640 */ extern u_long128 pad_dma_buf[2][16];
-/* bss 692840 */ extern char dualshock_motors[6];
-/* bss 692848 */ extern char dualshock_align[6];
-/* bss 692850 */ extern char dualshock_motors_saved[6];
-/* bss 692858 */ extern int32 dualshock0_time;
-/* bss 69285c */ extern int32 dualshock1_time;
-/* bss 692860 */ extern int32 dualshock0_time_saved;
-/* bss 692864 */ extern int32 dualshock1_time_saved;
-/* bss 692868 */ extern int32 overrideData[2][7];
-/* bss 6928a0 */ extern int32 overrideCommand[2][7];
-/* data 25aeac */ extern uint32 psxData;
+#include "ps2/gamepad.h"
 
 // /* 00137880 00000210 */ void GAMEPAD_SetupController(/* s1 17 */ int pad) {
 //     /* s0 16 */ int ret;

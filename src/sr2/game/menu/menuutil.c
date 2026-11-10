@@ -1,10 +1,7 @@
 /* Original path: C:\sr2\game\menu\menuutil.c */
 /* .text 0x001C75D0, .data 0x002A65B8 */
 
-#include "common.h"
-
-/* Globals of this unit (STABS). Their storage is still in asm/data, hence extern. */
-/* data 2a65b8 */ extern menu_sound_entry_t the_menu_sounds[0];
+#include "menu/menuutil.h"
 
 // /* 001c75d0 00000080 */ menu_ctrl_t menu_get_ctrl() {
 //     /* v0 2 */ int32 *command;

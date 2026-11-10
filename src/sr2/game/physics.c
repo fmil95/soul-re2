@@ -2,7 +2,7 @@
 /* .text 0x00144260, .rodata 0x002B5070, .bss 0x01E92980 */
 /* Code from other files was inlined here: /sr2/game/ps2/transform.h, collide.h, math3d.h */
 
-#include "common.h"
+#include "physics.h"
 
 // /* 00144260 00000044 */ void SetNoPtCollideInFamily(/* a0 4 */ Instance *instance) {
 //     /* s0 16 */ Instance *child;

@@ -1,19 +1,7 @@
 /* Original path: C:\sr2\game\sound\music\musplay.c */
 /* .text 0x001062A8, .data 0x00229468, .rodata 0x002B2080 */
 
-#include "common.h"
-
-/* Globals of this unit (STABS). Their storage is still in asm/data, hence extern. */
-/* data 229468 */ extern float masterVolume;
-/* data 22946c */ extern float reductionVolume;
-/* data 229470 */ extern float targetReductionVolume;
-/* data 229474 */ extern float reductionTime;
-/* data 229478 */ extern float MUSIC_reducedMasterVolume;
-/* data 22947c */ extern float MUSIC_masterVolumeSfx;
-/* data 229480 */ extern int MUSIC_Paused;
-/* data 229484 */ extern uint32 numUpdates;
-/* data 229488 */ extern float totalUpdateTime;
-/* data 229490 */ extern MUS_LoadingVars musicLoadingVars[2];
+#include "sound/music/musplay.h"
 
 // /* 001062a8 00000028 */ static void InitLoadingVars(/* a0 4 */ MUS_LoadingVars *vars) {}
 INCLUDE_ASM("asm/nonmatchings/sr2/game/sound/music/musplay", InitLoadingVars);

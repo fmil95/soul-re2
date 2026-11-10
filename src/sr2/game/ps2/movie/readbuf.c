@@ -1,13 +1,13 @@
 /* Original path: C:\sr2\game\ps2\movie\readbuf.c */
 /* .text 0x001C4B78 */
 
-#include "common.h"
+#include "ps2/movie/readbuf.h"
 
 // /* 001c4b78 00000018 */ void readBufCreate(/* a0 4 */ ReadBuf *b) {}
 INCLUDE_ASM("asm/nonmatchings/sr2/game/ps2/movie/readbuf", readBufCreate);
 
 // /* 001c4b90 00000008 */ void readBufDelete(/* a0 4 */ ReadBuf *b) {}
-void readBufDelete(void) {
+void readBufDelete(ReadBuf *b) {
 }
 
 // /* 001c4b98 00000030 */ int readBufBeginPut(/* a0 4 */ ReadBuf *b, /* a1 5 */ u_char **ptr) {

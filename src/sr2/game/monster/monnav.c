@@ -2,12 +2,7 @@
 /* .text 0x001894C0, .data 0x002A54E0 */
 /* Code from other files was inlined here: math3d.h */
 
-#include "common.h"
-
-/* Globals of this unit (STABS). Their storage is still in asm/data, hence extern. */
-/* data 2a54e0 */ extern MonsterWaypoint *waypointStore;
-/* data 2a54e4 */ extern MonsterWaypoint *waypointList;
-/* data 2a54e8 */ extern int32 searchCount;
+#include "monster/monnav.h"
 
 // /* 001894c0 0000002c */ int32 MON_InitMonsterNavigation() {}
 INCLUDE_ASM("asm/nonmatchings/sr2/game/monster/monnav", MON_InitMonsterNavigation);

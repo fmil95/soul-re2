@@ -1,15 +1,7 @@
 /* Original path: C:\sr2\game\saveinfo.c */
 /* .text 0x001C15D0, .data 0x002A6158, .rodata 0x002B7210, .bss 0x01E9A8B0 */
 
-#include "common.h"
-
-/* Globals of this unit (STABS). Their storage is still in asm/data, hence extern. */
-/* data 2a6158 */ extern GlobalSaveTracker *GlobalSave;
-/* data 2a615c */ extern int32 numbufferedIntros;
-/* data 2a6160 */ extern int the_header_size;
-/* data 2a6168 */ extern int32 SaveArraySize[8];
-/* bss 1e9a8b0 */ extern SavedInfoTracker savedInfoTracker;
-/* bss 1e9a8d0 */ extern SavedBasic *bufferSavedIntroArray[128];
+#include "saveinfo.h"
 
 // /* 001c15d0 0000000c */ void* SAVE_GetBuffer() {}
 INCLUDE_ASM("asm/nonmatchings/sr2/game/saveinfo", SAVE_GetBuffer);

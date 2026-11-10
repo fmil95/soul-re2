@@ -1,7 +1,7 @@
 /* Original path: C:\sr2\game\weather.c */
 /* .text 0x0016EAA8 */
 
-#include "common.h"
+#include "weather.h"
 
 // /* 0016eaa8 0000010c */ int Weather_GetHeight(/* a0 4 */ Level *level, /* a1 5 */ Vector4f *pos) {
 //     /* t1 9 */ Vector4f *globalOffset;

@@ -1,7 +1,7 @@
 /* Original path: C:\sr2\game\monster\missile.c */
 /* .text 0x00171DD8 */
 
-#include "common.h"
+#include "monster/missile.h"
 
 // /* 00171dd8 00000058 */ Instance* MISSILE_Find(/* a0 4 */ Instance *instance, /* a1 5 */ Object *object, /* a2 6 */ int32 segment) {
 //     /* v1 3 */ Instance *missile;

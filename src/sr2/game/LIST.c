@@ -1,7 +1,7 @@
 /* Original path: C:\sr2\game\LIST.C */
 /* .text 0x001415C8 */
 
-#include "common.h"
+#include "LIST.h"
 
 // /* 001415c8 00000020 */ void LIST_InsertFunc(/* a0 4 */ NodeType *list, /* a1 5 */ NodeType *node) {}
 INCLUDE_ASM("asm/nonmatchings/sr2/game/LIST", LIST_InsertFunc);

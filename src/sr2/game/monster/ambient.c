@@ -2,24 +2,7 @@
 /* .text 0x0016EE60, .data 0x002A45A0 */
 /* Code from other files was inlined here: /sr2/game/ps2/transform.h, math3d.h */
 
-#include "common.h"
-
-/* Globals of this unit (STABS). Their storage is still in asm/data, hence extern. */
-/* data 2a45a0 */ extern MonsterStateChoice FROG_StateChoiceTable[0];
-/* data 2a45f0 */ extern MonsterBehaviorChoice FROG_BehaviorChoiceTable[0];
-/* data 2a4650 */ extern MonsterStateChoice RAT_StateChoiceTable[0];
-/* data 2a4690 */ extern MonsterBehaviorChoice RAT_BehaviorChoiceTable[0];
-/* data 2a46d8 */ extern MonsterStateChoice BIRD_StateChoiceTable[0];
-/* data 2a4790 */ extern MonsterBehaviorChoice BIRD_BehaviorChoiceTable[0];
-/* data 2a4808 */ extern MonsterStateChoice BAT_StateChoiceTable[0];
-/* data 2a48c0 */ extern MonsterBehaviorChoice BAT_BehaviorChoiceTable[0];
-/* data 2a4938 */ extern MonsterStateChoice FISH_StateChoiceTable[0];
-/* data 2a49a0 */ extern MonsterBehaviorChoice FISH_BehaviorChoiceTable[0];
-/* data 2a4a00 */ extern MonsterFunctionTable FROG_FunctionTable;
-/* data 2a4a38 */ extern MonsterFunctionTable RAT_FunctionTable;
-/* data 2a4a70 */ extern MonsterFunctionTable BIRD_FunctionTable;
-/* data 2a4aa8 */ extern MonsterFunctionTable BAT_FunctionTable;
-/* data 2a4ae0 */ extern MonsterFunctionTable FISH_FunctionTable;
+#include "monster/ambient.h"
 
 // /* 0016ee60 000000f4 */ void AMBIENT_Init(/* s0 16 */ Instance *instance) {
 //     /* s2 18 */ MonsterVars *mv;
@@ -40,15 +23,15 @@ INCLUDE_ASM("asm/nonmatchings/sr2/game/monster/ambient", AMBIENT_Init);
 INCLUDE_ASM("asm/nonmatchings/sr2/game/monster/ambient", AMBIENT_Query);
 
 // /* 0016ef88 00000008 */ void AMBIENT_DamageEffect(/* a0 4 */ Instance *instance, /* a1 5 */ evFXHitData *data) {}
-void AMBIENT_DamageEffect(void) {
+void AMBIENT_DamageEffect(Instance *instance, evFXHitData *data) {
 }
 
 // /* 0016ef90 00000008 */ void AMBIENT_PerFrameDamageEffect(/* a0 4 */ Instance *instance) {}
-void AMBIENT_PerFrameDamageEffect(void) {
+void AMBIENT_PerFrameDamageEffect(Instance *instance) {
 }
 
 // /* 0016ef98 00000008 */ void AMBIENT_CleanUp(/* a0 4 */ Instance *instance) {}
-void AMBIENT_CleanUp(void) {
+void AMBIENT_CleanUp(Instance *instance) {
 }
 
 // /* 0016efa0 000000b4 */ int32 AMBIENT_BehaviorStack(/* s3 19 */ Instance *instance, /* s2 18 */ int32 *curr) {

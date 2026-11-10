@@ -2,11 +2,7 @@
 /* .text 0x00147D10, .data 0x0025BD1C */
 /* Code from other files was inlined here: /sr2/game/ps2/transform.h, fx.h, math3d.h, mempack.h */
 
-#include "common.h"
-
-/* Globals of this unit (STABS). Their storage is still in asm/data, hence extern. */
-/* data 25bd1c */ extern int visibleInstances;
-/* data 25bd20 */ extern VisibleInstance *visibleInstanceList;
+#include "ps2/pipe3d.h"
 
 // /* 00147d10 000002f8 */ void PIPE3D_CalculateWCTransform(/* s2 18 */ CameraCore *cameraCore) {
 //     /* 0x0(sp) */ Matrixf user_rotation;
@@ -227,7 +223,7 @@ INCLUDE_ASM("asm/nonmatchings/sr2/game/ps2/pipe3d", PIPE3D_InstanceListTransform
 INCLUDE_ASM("asm/nonmatchings/sr2/game/ps2/pipe3d", PIPE3D_LabelInstanceListInvisible);
 
 // /* 00149550 00000008 */ void PIPE3D_TransformVerticesToWorld(/* a0 4 */ Instance *instance, /* a1 5 */ SVector *poolVertex, /* a2 6 */ int32 *vtxSegment, /* a3 7 */ Vector *Average) {}
-void PIPE3D_TransformVerticesToWorld(void) {
+void PIPE3D_TransformVerticesToWorld(Instance *instance, SVector *poolVertex, int32 *vtxSegment, Vector *Average) {
 }
 
 // /* 00149558 000002a4 */ void PIPE3D_TransformFromZAxis(/* s5 21 */ float *transform[4], /* s6 22 */ SVector *normal) {

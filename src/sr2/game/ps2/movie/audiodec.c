@@ -1,10 +1,7 @@
 /* Original path: C:\sr2\game\ps2\movie\audiodec.c */
 /* .text 0x001C38C8, .rodata 0x002B74C0, .bss 0x01E9AB00 */
 
-#include "common.h"
-
-/* Globals of this unit (STABS). Their storage is still in asm/data, hence extern. */
-/* bss 1e9ab00 */ extern char _0_buf[2048];
+#include "ps2/movie/audiodec.h"
 
 // /* 001c38c8 00000128 */ int audioDecCreate(/* s2 18 */ AudioDec *ad, /* s0 16 */ u_char *buff, /* s1 17 */ int buffSize, /* s3 19 */ int iopBuffSize) {}
 INCLUDE_ASM("asm/nonmatchings/sr2/game/ps2/movie/audiodec", audioDecCreate);

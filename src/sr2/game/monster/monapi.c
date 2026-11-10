@@ -2,7 +2,7 @@
 /* .text 0x00172110, .data 0x002A4B50, .rodata 0x002B5E40 */
 /* Code from other files was inlined here: math3d.h */
 
-#include "common.h"
+#include "monster/monapi.h"
 
 // /* 00172110 000001f4 */ void MonsterProcess(/* s0 16 */ Instance *instance, /* a1 5 */ GameTracker *gameTracker) {
 //     /* s1 17 */ MonsterStateFuncs *stateFuncs;

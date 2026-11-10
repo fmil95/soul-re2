@@ -2,12 +2,7 @@
 /* .text 0x00194688, .bss 0x01E97198 */
 /* Code from other files was inlined here: /sr2/game/ps2/transform.h, g2/AnmCtrlr.c, g2/AnmDecmp.c, g2/AnmIntrp.c, g2/QuatG2.h, g2/anmg2ilf.c, math3d.h */
 
-#include "common.h"
-
-/* Globals of this unit (STABS). Their storage is still in asm/data, hence extern. */
-/* bss 1e97198 */ extern G2AnimChanStatusBlockPool _chanStatusBlockPool;
-/* bss 1e971a8 */ extern G2AnimControllerPool _controllerPool;
-/* bss 1e971b8 */ extern G2AnimInterpStateBlockPool _interpStateBlockPool;
+#include "g2/AnimG2.h"
 
 // /* 00194688 0000006c */ void G2Anim_ClearAlarm(/* s2 18 */ G2Anim *anim, /* s3 19 */ uint32 flag) {
 //     /* s1 17 */ int i;
@@ -896,7 +891,7 @@ INCLUDE_ASM("asm/nonmatchings/sr2/game/g2/AnimG2", G2Anim_GetSegChannelValue);
 INCLUDE_ASM("asm/nonmatchings/sr2/game/g2/AnimG2", G2Anim_GetRootMotionFromTimeForDuration);
 
 // /* 001989e0 00000008 */ void G2Anim_DumpStats(/* a0 4 */ char *buffer) {}
-void G2Anim_DumpStats(void) {
+void G2Anim_DumpStats(char *buffer) {
 }
 
 // /* 001989e8 00000194 */ void G2AnimSection_SwitchToKeylistAtTime(/* s0 16 */ G2AnimSection *section, /* s3 19 */ G2AnimKeylist *keylist, /* s5 21 */ G2AnimKeylistID keylistID, /* f20 58 */ G2TimerAtomicUnit targetTime, /* s4 20 */ G2AnimFxHeader *fxList) {

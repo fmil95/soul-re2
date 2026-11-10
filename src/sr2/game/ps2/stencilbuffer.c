@@ -2,11 +2,7 @@
 /* .text 0x001D8000, .data 0x002A6710 */
 /* Code from other files was inlined here: ps2/drawlist.h, ps2/ps2dma.h */
 
-#include "common.h"
-
-/* Globals of this unit (STABS). Their storage is still in asm/data, hence extern. */
-/* data 2a6710 */ extern uint32 *pnHalfOffset;
-/* data 2a6714 */ extern uint32 *pnHalfOffset2;
+#include "ps2/stencilbuffer.h"
 
 // /* 001d8000 00000624 */ void StencilBuffer_insert(/* 0x0(sp) */ StencilBufferPrim **pptStencilBufferPrim, /* 0x4(sp) */ int64 ***pppnPath3Ptrs, /* 0x8(sp) */ int32 nVRam, /* s1 17 */ int64 *pnShadowPolys) {
 //     /* v0 2 */ int64 *pnPath2List;

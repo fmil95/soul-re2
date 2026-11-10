@@ -2,11 +2,7 @@
 /* .text 0x0013A898, .data 0x0025AF00, .rodata 0x002B4BB8 */
 /* Code from other files was inlined here: /sr2/game/ps2/transform.h, math3d.h, mempack.h */
 
-#include "common.h"
-
-/* Globals of this unit (STABS). Their storage is still in asm/data, hence extern. */
-/* data 25af00 */ extern int16 gInstanceIntroUniqueIDs[200];
-/* data 25b0c0 */ extern int16 gInstanceCurrentStreamUnitIDs[200];
+#include "Instance.h"
 
 // /* 0013a898 00000030 */ void INSTANCE_ClearTfaces(/* a0 4 */ Instance *instance) {}
 INCLUDE_ASM("asm/nonmatchings/sr2/game/Instance", INSTANCE_ClearTfaces);
@@ -18,7 +14,7 @@ INCLUDE_ASM("asm/nonmatchings/sr2/game/Instance", INSTANCE_Deactivate);
 INCLUDE_ASM("asm/nonmatchings/sr2/game/Instance", INSTANCE_Reactivate);
 
 // /* 0013aa00 00000008 */ static void INSTANCE_DeactivatedProcess(/* a0 4 */ Instance *instance, /* a1 5 */ GameTracker *gameTracker) {}
-void INSTANCE_DeactivatedProcess(void) {
+void INSTANCE_DeactivatedProcess(Instance *instance, GameTracker *gameTracker) {
 }
 
 // /* 0013aa08 0000025c */ void INSTANCE_DeactivateFarInstances(/* s2 18 */ GameTracker *gameTracker) {
@@ -198,7 +194,7 @@ INCLUDE_ASM("asm/nonmatchings/sr2/game/Instance", INSTANCE_BirthObject);
 INCLUDE_ASM("asm/nonmatchings/sr2/game/Instance", INSTANCE_Birth);
 
 // /* 0013cbb0 00000008 */ void INSTANCE_BuildStaticShadow(/* a0 4 */ Instance *instance) {}
-void INSTANCE_BuildStaticShadow(void) {
+void INSTANCE_BuildStaticShadow(Instance *instance) {
 }
 
 // /* 0013cbb8 00000468 */ void INSTANCE_DefaultInit(/* s1 17 */ Instance *instance, /* s2 18 */ Object *object, /* s3 19 */ int modelNum) {

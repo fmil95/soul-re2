@@ -1,12 +1,7 @@
 /* Original path: C:\sr2\game\sound\music\musmidi.c */
 /* .text 0x00103D58, .data 0x00211F68, .rodata 0x002B1F50 */
 
-#include "common.h"
-
-/* Globals of this unit (STABS). Their storage is still in asm/data, hence extern. */
-/* data 211f68 */ extern uint8 controllerDefaults[128];
-/* data 211fe8 */ extern MUS_Song g_songs[2];
-/* data 21eb68 */ extern MUSMIDI_Track g_midiTracks[256];
+#include "sound/music/musmidi.h"
 
 // /* 00103d58 00000040 */ static MUSMIDI_Track* AllocTrack() {}
 INCLUDE_ASM("asm/nonmatchings/sr2/game/sound/music/musmidi", AllocTrack);

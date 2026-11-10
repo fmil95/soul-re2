@@ -1,12 +1,7 @@
 /* Original path: C:\sr2\game\monster\demon.c */
 /* .text 0x001935A8, .data 0x002A5E78 */
 
-#include "common.h"
-
-/* Globals of this unit (STABS). Their storage is still in asm/data, hence extern. */
-/* data 2a5e78 */ extern MonsterStateChoice DEMON_StateChoiceTable[0];
-/* data 2a5ef0 */ extern MonsterBehaviorChoice DEMON_BehaviorChoiceTable[0];
-/* data 2a5f80 */ extern MonsterFunctionTable DEMON_FunctionTable;
+#include "monster/demon.h"
 
 // /* 001935a8 00000038 */ void DEMON_Init(/* v0 2 */ Instance *instance) {
 //     /* s0 16 */ MonsterVars *mv;
@@ -44,7 +39,7 @@ INCLUDE_ASM("asm/nonmatchings/sr2/game/monster/demon", DEMON_ReturnBehaviorShoul
 INCLUDE_ASM("asm/nonmatchings/sr2/game/monster/demon", DEMON_ReturnBehaviorEntry);
 
 // /* 00193b48 00000008 */ void DEMON_ReturnBehaviorExit(/* a0 4 */ Instance *instance, /* a1 5 */ int32 *params) {}
-void DEMON_ReturnBehaviorExit(void) {
+void DEMON_ReturnBehaviorExit(Instance *instance, int32 *params) {
 }
 
 // /* 00193b50 00000014 */ int32 DEMON_EmergeBehaviorShouldRun(/* a0 4 */ Instance *instance, /* a1 5 */ int32 *params) {
@@ -58,7 +53,7 @@ INCLUDE_ASM("asm/nonmatchings/sr2/game/monster/demon", DEMON_EmergeBehaviorShoul
 INCLUDE_ASM("asm/nonmatchings/sr2/game/monster/demon", DEMON_EmergeBehaviorEntry);
 
 // /* 00193b98 00000008 */ void DEMON_EmergeBehaviorExit(/* a0 4 */ Instance *instance, /* a1 5 */ int32 *params) {}
-void DEMON_EmergeBehaviorExit(void) {
+void DEMON_EmergeBehaviorExit(Instance *instance, int32 *params) {
 }
 
 // /* 00193ba0 00000014 */ int32 DEMON_GoHomeBehaviorShouldRun(/* a0 4 */ Instance *instance, /* a1 5 */ int32 *params) {

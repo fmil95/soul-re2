@@ -2,39 +2,7 @@
 /* .text 0x00123FE0, .data 0x00236A40, .bss 0x0030E100 */
 /* Code from other files was inlined here: /sr2/game/ps2/transform.h, ps2/drawlist.h, ps2/ps2dma.h, timer.h */
 
-#include "common.h"
-
-/* Globals of this unit (STABS). Their storage is still in asm/data, hence extern. */
-/* data 236a40 */ extern int32 gTexturing;
-/* data 236a44 */ extern int32 gUseOldVU1Code;
-/* data 236a48 */ extern int32 gQWCAdjust;
-/* data 236a50 */ extern VramPixelPacket *firstPdat;
-/* data 236a54 */ extern DmaTag *firstTag;
-/* data 236a58 */ extern VramPixelPacket **firstTextureTag;
-/* data 236a5c */ extern VramPixelPacket **tempTextureTag;
-/* data 236a60 */ extern void *firstVifTag;
-/* data 236a64 */ extern VramPixelPacket **firstGifTag;
-/* data 236a68 */ extern void *oldFirstVifTag;
-/* data 236a6c */ extern VramPixelPacket **oldFirstGifTag;
-/* data 236a70 */ extern TexEnvTranslucent *DRAWLIST_zSortTexEnv;
-/* data 236a74 */ extern _TextureItem *PS2_drawList;
-/* data 236a80 */ extern TexEnvTranslucent PS2_SpecialTextures[2];
-/* data 236b40 */ extern ZBucket PS2_sortedDrawList[16384];
-/* data 256b40 */ extern int numZSortedTextures;
-/* data 256b44 */ extern uint8 *gDrawListNextMem;
-/* bss 30e100 */ extern uint8 drawListPool[2][1835008];
-/* bss 68e100 */ extern uint8 *gDrawListStartMem;
-/* data 256b48 */ extern int numItems;
-/* data 256b4c */ extern int numTextures;
-/* data 256b50 */ extern int ZSortedItemFlag;
-/* bss 68e104 */ extern VramPixelPacket *oldPdat;
-/* bss 68e108 */ extern DmaTag *oldTag;
-/* data 256b54 */ extern VramPixelPacket **oldTextureTag;
-/* data 256b58 */ extern int vblDrawEnabled;
-/* bss 68e10c */ extern int32 vblCount;
-/* bss 68e110 */ extern int vifHandler;
-/* bss 68e114 */ extern int gifHandler;
-/* bss 68e118 */ extern int vifIntHandler;
+#include "ps2/drawlist.h"
 
 // /* 00123fe0 00000038 */ int DRAWLIST_GetUsedMem() {}
 INCLUDE_ASM("asm/nonmatchings/sr2/game/ps2/drawlist", DRAWLIST_GetUsedMem);

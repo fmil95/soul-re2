@@ -1,7 +1,7 @@
 /* Original path: C:\sr2\game\ps2\movie\vibuf.c */
 /* .text 0x001C4C80, .rodata 0x002B76F8 */
 
-#include "common.h"
+#include "ps2/movie/vibuf.h"
 
 // /* 001c4c80 00000044 */ int getFIFOindex(/* a2 6 */ ViBuf *f, /* a1 5 */ void *addr) {}
 INCLUDE_ASM("asm/nonmatchings/sr2/game/ps2/movie/vibuf", getFIFOindex);

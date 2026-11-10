@@ -2,11 +2,7 @@
 /* .text 0x0017FA48, .data 0x002A4B90 */
 /* Code from other files was inlined here: /sr2/game/ps2/transform.h, math3d.h */
 
-#include "common.h"
-
-/* Globals of this unit (STABS). Their storage is still in asm/data, hence extern. */
-/* data 2a4b90 */ extern RadarInfo radarDir[8];
-/* data 2a4c30 */ extern uint8 radarDirIndex[8];
+#include "monster/monsense.h"
 
 // /* 0017fa48 00000070 */ void MONSENSE_RelocateCoords(/* a0 4 */ Instance *instance, /* a1 5 */ Vector4f *offset) {
 //     /* v0 2 */ MonsterVars *mv;

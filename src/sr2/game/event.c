@@ -2,21 +2,7 @@
 /* .text 0x00125AC8, .data 0x00256B60, .rodata 0x002B4540, .bss 0x0068E120 */
 /* Code from other files was inlined here: math3d.h */
 
-#include "common.h"
-
-/* Globals of this unit (STABS). Their storage is still in asm/data, hence extern. */
-/* data 256b60 */ extern float gEventStrFrames;
-/* data 256b64 */ extern char *gEventStr;
-/* data 256b68 */ extern int gEventDebugPage;
-/* data 256b6c */ extern int gTraceLevel;
-/* data 256b70 */ extern GlobalData gGlobalData;
-/* data 256e70 */ extern short int currentSoundStreamEventHandle;
-/* data 256e74 */ extern void *ambientstream;
-/* data 256e80 */ extern HintSystemStruct gHintSystem;
-/* bss 68e120 */ extern int MoviePlayed;
-/* bss 68e124 */ extern int MovieToPlay;
-/* bss 68e128 */ extern EventSoundStream EventSoundStreams[8];
-/* bss 68e168 */ extern char ambientstreamname[64];
+#include "event.h"
 
 // /* 00125ac8 00000008 */ void EVENT_Dummy() {}
 void EVENT_Dummy(void) {
@@ -197,7 +183,7 @@ INCLUDE_ASM("asm/nonmatchings/sr2/game/event", EVENT_ClearAlarm);
 INCLUDE_ASM("asm/nonmatchings/sr2/game/event", EVENT_SetAlarm);
 
 // /* 00126b90 00000008 */ void EVENT_Trace(/* a0 4 */ char *str, /* a1 5 */ int level) {}
-void EVENT_Trace(void) {
+void EVENT_Trace(char *str, int level) {
 }
 
 // /* 00126b98 00000054 */ int EVENT_DoorInit(/* s1 17 */ Instance *lock, /* a1 5 */ int32 splineID, /* a2 6 */ int32 cameraSID, /* a3 7 */ int32 cameraTID) {

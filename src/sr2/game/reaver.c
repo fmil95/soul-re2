@@ -2,10 +2,7 @@
 /* .text 0x001547B8, .rodata 0x002B5140, .bss 0x01E92B14 */
 /* Code from other files was inlined here: /sr2/game/ps2/transform.h, math3d.h */
 
-#include "common.h"
-
-/* Globals of this unit (STABS). Their storage is still in asm/data, hence extern. */
-/* bss 1e92b14 */ extern short int FireReaverFlag;
+#include "reaver.h"
 
 // /* 001547b8 00000154 */ void SoulReaverInit(/* s1 17 */ Instance *instance, /* a1 5 */ GameTracker *gameTracker) {
 //     /* s0 16 */ ReaverData *data;

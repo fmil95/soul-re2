@@ -2,7 +2,7 @@
 /* .text 0x0015ABD8, .bss 0x01E92BB0 */
 /* Code from other files was inlined here: math3d.h */
 
-#include "common.h"
+#include "SPLINE.h"
 
 // /* 0015abd8 000000fc */ void _SplineS2Pos(/* a0 4 */ Vector3f *p, /* f12 50 */ float s, /* a1 5 */ SplineKey *key, /* a2 6 */ SplineKey *key2) {
 //     /* f0 38 */ float s2;

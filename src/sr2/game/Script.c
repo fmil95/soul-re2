@@ -2,7 +2,7 @@
 /* .text 0x00155FB0, .rodata 0x002B5210 */
 /* Code from other files was inlined here: /sr2/game/ps2/transform.h */
 
-#include "common.h"
+#include "Script.h"
 
 // /* 00155fb0 000000b8 */ void SCRIPT_CombineEulerAngles(/* s1 17 */ Vector4f *combinedRotation, /* a1 5 */ Vector4f *inputRotation1, /* s0 16 */ Vector4f *inputRotation2) {
 //     /* 0x0(sp) */ Matrixf rotMatrix1;

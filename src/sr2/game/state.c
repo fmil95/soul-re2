@@ -1,12 +1,7 @@
 /* Original path: C:\sr2\game\state.c */
 /* .text 0x0015C7D0, .data 0x0025C278, .rodata 0x002B5360, .bss 0x01E92C40 */
 
-#include "common.h"
-
-/* Globals of this unit (STABS). Their storage is still in asm/data, hence extern. */
-/* data 25c278 */ extern G2AnimAlphaTable *G2AlphaTables[7];
-/* data 25c294 */ extern void *circWhere;
-/* bss 1e92c40 */ extern int8 circBuf[8192];
+#include "state.h"
 
 // /* 0015c7d0 000000f4 */ int32 StateAnimCallback(/* BADREGISTER -1 */ G2Anim *anim, /* a1 5 */ G2AnimSectionID sectionID, /* a2 6 */ G2AnimCallbackMsg message, /* s0 16 */ int32 messageDataA, /* t0 8 */ int32 messageDataB, /* t1 9 */ void *data) {
 //     /* v0 2 */ State *pSection;

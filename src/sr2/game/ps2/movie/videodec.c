@@ -1,10 +1,7 @@
 /* Original path: C:\sr2\game\ps2\movie\videodec.c */
 /* .text 0x001C5C38, .rodata 0x002B7710, .bss 0x01E9B300 */
 
-#include "common.h"
-
-/* Globals of this unit (STABS). Their storage is still in asm/data, hence extern. */
-/* bss 1e9b300 */ extern int decstate;
+#include "ps2/movie/videodec.h"
 
 // /* 001c5c38 00000100 */ int videoDecCreate(/* s0 16 */ VideoDec *vd, /* a1 5 */ u_char *mpegWork, /* a2 6 */ int mpegWorkSize, /* s1 17 */ u_long128 *data, /* s2 18 */ u_long128 *tag, /* s3 19 */ int tagSize, /* s4 20 */ TimeStamp *pts, /* s5 21 */ int n_pts) {}
 INCLUDE_ASM("asm/nonmatchings/sr2/game/ps2/movie/videodec", videoDecCreate);

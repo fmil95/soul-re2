@@ -2,21 +2,7 @@
 /* .text 0x001D6F48, .data 0x002A66D0, .bss 0x01E9B320 */
 /* Code from other files was inlined here: mempack.h, ps2/ps2dma.h, timer.h */
 
-#include "common.h"
-
-/* Globals of this unit (STABS). Their storage is still in asm/data, hence extern. */
-/* data 2a66d0 */ extern void *channelAddr[0];
-/* data 2a66f8 */ extern int vifDMARunning;
-/* data 2a66fc */ extern int spad_dma_qw_left;
-/* data 2a6700 */ extern uint32 spad_dma_buffer_ptr;
-/* data 2a6704 */ extern int32 crap;
-/* data 2a6708 */ extern int32 gDebugVIFTimeStart;
-/* data 2a670c */ extern int32 gDebugGIFTimeStart;
-/* bss 1e9b320 */ extern int spad_dma_sendflag;
-/* bss 1e9b328 */ extern uint32 spad_dma_buffers[2];
-/* bss 1e9b330 */ extern void *spad_mem_addr;
-/* bss 1e9b334 */ extern int spad_dma_buffersize_qw;
-/* bss 1e9b338 */ extern int spad_dma_current_buffer;
+#include "ps2/ps2dma.h"
 
 // /* 001d6f48 000000a4 */ void DMA_WaitForChannelMask(/* a3 7 */ int channelMask) {
 //     /* v1 3 */ uint32 tempDSTAT;

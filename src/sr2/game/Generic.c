@@ -1,7 +1,7 @@
 /* Original path: C:\sr2\game\Generic.c */
 /* .text 0x00138708, .rodata 0x002B48F0 */
 
-#include "common.h"
+#include "Generic.h"
 
 // /* 00138708 00000120 */ void GenericInit(/* s0 16 */ Instance *instance, /* a1 5 */ GameTracker *gameTracker) {
 //     /* a0 4 */ Spline *spline;
@@ -10,7 +10,7 @@
 INCLUDE_ASM("asm/nonmatchings/sr2/game/Generic", GenericInit);
 
 // /* 00138828 00000008 */ void GenericCollide(/* a0 4 */ Instance *instance, /* a1 5 */ GameTracker *gameTracker) {}
-void GenericCollide(void) {
+void GenericCollide(Instance *instance, GameTracker *gameTracker) {
 }
 
 // /* 00138830 00000038 */ void GenericProcess(/* a0 4 */ Instance *instance, /* a1 5 */ GameTracker *gameTracker) {

@@ -1,14 +1,7 @@
 /* Original path: C:\sr2\game\normalmask.c */
 /* .text 0x0010E840, .data 0x0022CB20, .rodata 0x002B2C10, .bss 0x0030DE30 */
 
-#include "common.h"
-
-/* Globals of this unit (STABS). Their storage is still in asm/data, hence extern. */
-/* data 22cb20 */ extern int32 NORMALMASK_UseNormalMask;
-/* data 22cb28 */ extern uint32 NORMALMASK_VisibleMask[4];
-/* bss 30de30 */ extern Vector3f NORMALMASK_ClusterCoors[15];
-/* bss 30dee8 */ extern int32 NORMALMASK_SubClusters[16][3];
-/* bss 30dfa8 */ extern uint32 NORMALMASK_CalcedVisibleMask[4];
+#include "normalmask.h"
 
 // /* 0010e840 00000080 */ static void NORMALMASK_Normalize(/* s0 16 */ Vector3f *v) {
 //     /* f0 38 */ float len;

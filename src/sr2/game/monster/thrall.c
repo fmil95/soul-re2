@@ -2,12 +2,7 @@
 /* .text 0x0018D210, .data 0x002A5818 */
 /* Code from other files was inlined here: math3d.h */
 
-#include "common.h"
-
-/* Globals of this unit (STABS). Their storage is still in asm/data, hence extern. */
-/* data 2a5818 */ extern MonsterStateChoice THRALL_StateChoiceTable[0];
-/* data 2a58d0 */ extern MonsterBehaviorChoice THRALL_BehaviorChoiceTable[0];
-/* data 2a5960 */ extern MonsterFunctionTable THRALL_FunctionTable;
+#include "monster/thrall.h"
 
 // /* 0018d210 0000004c */ int32 THRALL_MessageHandler(/* a0 4 */ Instance *instance, /* a1 5 */ int32 message, /* a2 6 */ int32 mdata) {
 //     /* a3 7 */ MonsterVars *mv;

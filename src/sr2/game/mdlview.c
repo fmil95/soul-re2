@@ -2,24 +2,7 @@
 /* .text 0x00166098, .data 0x002A4088, .rodata 0x002B57B8, .bss 0x01E94C60 */
 /* Code from other files was inlined here: /sr2/game/ps2/transform.h, math3d.h */
 
-#include "common.h"
-
-/* Globals of this unit (STABS). Their storage is still in asm/data, hence extern. */
-/* data 2a4088 */ extern int mdlViewMode;
-/* data 2a408c */ extern int mdlViewAnim;
-/* data 2a4090 */ extern int mdlViewSection;
-/* data 2a4094 */ extern int32 mdlViewCurrentModel;
-/* data 2a4098 */ extern int32 mdlViewFlags;
-/* data 2a40a0 */ extern DebugMenuLine mdlViewMenu[0];
-/* data 2a41a8 */ extern DebugMenuLine mdlViewDrawMenu[0];
-/* bss 1e94c60 */ extern char mdlViewObjectName[12];
-/* bss 1e94c70 */ extern char mdlViewLinkObjectName[12];
-/* bss 1e94c7c */ extern int32 mdlViewLinkObjectSeg;
-/* bss 1e94c80 */ extern Instance *mdlViewInstance;
-/* bss 1e94c90 */ extern Vector4f mdlViewOffset;
-/* bss 1e94ca0 */ extern Vector4f mdlViewLastCameraPos;
-/* bss 1e94cb0 */ extern Vector4f mdlViewInstanceOrigin;
-/* bss 1e94cc0 */ extern AnimName *mdlViewAnimNames;
+#include "mdlview.h"
 
 // /* 00166098 00000048 */ void MDLVIEW_Init(/* a1 5 */ char *args) {}
 INCLUDE_ASM("asm/nonmatchings/sr2/game/mdlview", MDLVIEW_Init);
@@ -152,7 +135,7 @@ INCLUDE_ASM("asm/nonmatchings/sr2/game/mdlview", MDLVIEW_Camera);
 INCLUDE_ASM("asm/nonmatchings/sr2/game/mdlview", MDLVIEW_Controls);
 
 // /* 00167418 00000008 */ void MDLVIEW_EffectsHandler(/* a0 4 */ Instance *instance) {}
-void MDLVIEW_EffectsHandler(void) {
+void MDLVIEW_EffectsHandler(Instance *instance) {
 }
 
 // /* 00167420 000000cc */ void MDLVIEW_LODPrint(/* a0 4 */ Instance *instance) {
@@ -188,7 +171,7 @@ INCLUDE_ASM("asm/nonmatchings/sr2/game/mdlview", MDLVIEW_ProcessLinked);
 INCLUDE_ASM("asm/nonmatchings/sr2/game/mdlview", MDLVIEW_Query);
 
 // /* 001678f8 00000008 */ void MDLVIEW_Post(/* a0 4 */ Instance *instance, /* a1 5 */ uint32 message, /* a2 6 */ uint32 data) {}
-void MDLVIEW_Post(void) {
+void MDLVIEW_Post(Instance *instance, uint32 message, uint32 data) {
 }
 
 // /* 00167900 000000cc */ void MDLVIEW_MoveModelToFloor() {

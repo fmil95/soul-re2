@@ -1,11 +1,7 @@
 /* Original path: C:\sr2\game\ps2\timer.c */
 /* .text 0x00162F50, .bss 0x01E94C40 */
 
-#include "common.h"
-
-/* Globals of this unit (STABS). Their storage is still in asm/data, hence extern. */
-/* bss 1e94c40 */ extern uint32 lastCount;
-/* bss 1e94c48 */ extern uint64 totalCycles;
+#include "ps2/timer.h"
 
 // /* 00162f50 00000018 */ void TIMER_Init() {}
 INCLUDE_ASM("asm/nonmatchings/sr2/game/ps2/timer", TIMER_Init);

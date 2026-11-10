@@ -1,13 +1,7 @@
 /* Original path: C:\sr2\game\Signal.c */
 /* .text 0x00156E50, .data 0x0025BE88, .rodata 0x002B5230, .bss 0x01E92B18 */
 
-#include "common.h"
-
-/* Globals of this unit (STABS). Their storage is still in asm/data, hence extern. */
-/* data 25be8c */ extern int32 SignalEndGame;
-/* data 25be90 */ extern SignalInfo signalInfoList[29];
-/* data 25bfec */ extern int32 NumSignalsToReset;
-/* bss 1e92b18 */ extern SignalResetStruct ResetSignalArray[16];
+#include "Signal.h"
 
 // /* 00156e50 00000024 */ int32 SIGNAL_HandleLightGroup(/* a0 4 */ Instance *instance, /* a1 5 */ Signal *signal) {}
 INCLUDE_ASM("asm/nonmatchings/sr2/game/Signal", SIGNAL_HandleLightGroup);

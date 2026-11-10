@@ -1,14 +1,7 @@
 /* Original path: C:\sr2\game\ps2\iopload.c */
 /* .text 0x001D7578, .rodata 0x002B87E0, .bss 0x01E9B340 */
 
-#include "common.h"
-
-/* Globals of this unit (STABS). Their storage is still in asm/data, hence extern. */
-/* bss 1e9b740 */ extern sceSifClientData cd0;
-/* bss 1e9b768 */ extern IOPFileInfo fileInfo[32];
-/* bss 1e9c268 */ extern IOPStream streamList[16];
-/* bss 1e9c8c0 */ extern IOPStreamStatus streamStatusStorage[16];
-/* bss 1e9c9c0 */ extern IOPStreamStatus *streamStatus;
+#include "ps2/iopload.h"
 
 // /* 001d7578 00000108 */ static void rpcInit() {
 //     /* a0 4 */ int i;

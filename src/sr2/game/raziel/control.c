@@ -2,10 +2,7 @@
 /* .text 0x0019D010, .bss 0x01E999B0 */
 /* Code from other files was inlined here: /sr2/game/ps2/transform.h */
 
-#include "common.h"
-
-/* Globals of this unit (STABS). Their storage is still in asm/data, hence extern. */
-/* bss 1e999b0 */ extern Force *ExternalForces;
+#include "raziel/control.h"
 
 // /* 0019d010 0000007c */ void SetPhysics(/* s0 16 */ Instance *instance, /* f1 39 */ float gravity, /* f20 58 */ float x, /* f21 59 */ float y, /* f22 60 */ float z) {}
 INCLUDE_ASM("asm/nonmatchings/sr2/game/raziel/control", SetPhysics);

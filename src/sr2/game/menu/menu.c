@@ -1,7 +1,7 @@
 /* Original path: C:\sr2\game\menu\menu.c */
 /* .text 0x001C6750, .data 0x002A6578, .rodata 0x002B77A8 */
 
-#include "common.h"
+#include "menu/menu.h"
 
 // /* 001c6750 00000048 */ void MENU_Init(/* s1 17 */ GameTracker *gt) {
 //     /* s0 16 */ menu_t *menu;
@@ -53,7 +53,7 @@ INCLUDE_ASM("asm/nonmatchings/sr2/game/menu/menu", menu_item);
 INCLUDE_ASM("asm/nonmatchings/sr2/game/menu/menu", menu_build);
 
 // /* 001c6a98 00000008 */ void DisplayHintBox(/* a0 4 */ int len, /* a1 5 */ int y) {}
-void DisplayHintBox(void) {
+void DisplayHintBox(int len, int y) {
 }
 
 // /* 001c6aa0 00000308 */ void DisplayMenuBox(/* a0 4 */ int x0, /* a1 5 */ int x1, /* a2 6 */ int y0, /* a3 7 */ int y1) {

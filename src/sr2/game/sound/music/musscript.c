@@ -1,12 +1,7 @@
 /* Original path: C:\sr2\game\sound\music\musscript.c */
 /* .text 0x00104F18, .data 0x00228F68, .rodata 0x002B1FD8, .bss 0x002BF220 */
 
-#include "common.h"
-
-/* Globals of this unit (STABS). Their storage is still in asm/data, hence extern. */
-/* data 228f68 */ extern MUSSCRIPT_CommandFunc commandFunctions[0];
-/* data 229368 */ extern uint8 g_userVariables[256];
-/* bss 2bf220 */ extern uint8 commandData[256];
+#include "sound/music/musscript.h"
 
 // /* 00104f18 0000003c */ void Assert(/* a0 4 */ char *msg, /* a1 5 */ int line) {
 //     /* 0x0(sp) */ char buf[2048];
@@ -281,11 +276,11 @@ INCLUDE_ASM("asm/nonmatchings/sr2/game/sound/music/musscript", MUSSCRIPT_LinkCha
 INCLUDE_ASM("asm/nonmatchings/sr2/game/sound/music/musscript", MUSSCRIPT_LinkChannelsToSfx);
 
 // /* 00106298 00000008 */ void MUSSCRIPT_GetSourceFilename(/* a0 4 */ MUSSCRIPT_ScriptAtt *attributes) {}
-void MUSSCRIPT_GetSourceFilename(void) {
+void MUSSCRIPT_GetSourceFilename(MUSSCRIPT_ScriptAtt *attributes) {
 }
 
 // /* 001062a0 00000008 */ void MUSSCRIPT_GetSourceLineNr(/* a0 4 */ MUSSCRIPT_ScriptAtt *attributes) {}
-void MUSSCRIPT_GetSourceLineNr(void) {
+void MUSSCRIPT_GetSourceLineNr(MUSSCRIPT_ScriptAtt *attributes) {
 }
 
 INCLUDE_RODATA("asm/nonmatchings/sr2/game/sound/music/musscript", D_002B1FD8);

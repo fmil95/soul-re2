@@ -1,16 +1,7 @@
 /* Original path: C:\sr2\game\sound\music\musbank.c */
 /* .text 0x001024A0, .data 0x0020FD40, .rodata 0x002B1E98, .bss 0x002BDA50 */
 
-#include "common.h"
-
-/* Globals of this unit (STABS). Their storage is still in asm/data, hence extern. */
-/* data 20fd40 */ extern int MUSIC_MonoMode;
-/* data 20fd48 */ extern float largePitch[120];
-/* data 20ff28 */ extern float smallPitch[256];
-/* data 210328 */ extern MUSBANK_GlobalChannel g_bankGlobalChannels[48];
-/* data 211d68 */ extern float concaveTable[128];
-/* bss 2bda50 */ extern float sinTable[513];
-/* bss 2be258 */ extern float dbTable[1010];
+#include "sound/music/musbank.h"
 
 // /* 001024a0 0000007c */ static float FastLog2(/* f12 50 */ float x) {
 //     /* v0 2 */ uint32 exp;

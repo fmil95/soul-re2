@@ -1,14 +1,7 @@
 /* Original path: C:\sr2\game\ps2\movie\disp.c */
 /* .text 0x001C4260, .data 0x002A6560, .rodata 0x002B76C0 */
 
-#include "common.h"
-
-/* Globals of this unit (STABS). Their storage is still in asm/data, hence extern. */
-/* data 2a6560 */ extern int isCountVblank;
-/* data 2a6564 */ extern int vblankCount;
-/* data 2a6568 */ extern int isFrameEnd;
-/* data 2a656c */ extern int oddeven;
-/* data 2a6570 */ extern int handler_error;
+#include "ps2/movie/disp.h"
 
 // /* 001c4260 00000380 */ void setImageTag(/* a0 4 */ u_int *tags, /* s4 20 */ void *image, /* s1 17 */ int index, /* 0x50(sp) */ int image_w, /* 0x54(sp) */ int image_h) {
 //     /* 0x58(sp) */ int mbx;

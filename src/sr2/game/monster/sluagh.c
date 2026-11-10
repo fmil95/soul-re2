@@ -2,12 +2,7 @@
 /* .text 0x0018A658, .data 0x002A54F0, .rodata 0x002B6720 */
 /* Code from other files was inlined here: math3d.h */
 
-#include "common.h"
-
-/* Globals of this unit (STABS). Their storage is still in asm/data, hence extern. */
-/* data 2a54f0 */ extern MonsterStateChoice SLUAGH_StateChoiceTable[0];
-/* data 2a5568 */ extern MonsterBehaviorChoice SLUAGH_BehaviorChoiceTable[0];
-/* data 2a55f8 */ extern MonsterFunctionTable SLUAGH_FunctionTable;
+#include "monster/sluagh.h"
 
 // /* 0018a658 00000034 */ void SLUAGH_Init(/* v0 2 */ Instance *instance) {
 //     /* s0 16 */ MonsterVars *mv;
@@ -48,7 +43,7 @@ INCLUDE_ASM("asm/nonmatchings/sr2/game/monster/sluagh", SLUAGH_MessageHandler);
 INCLUDE_ASM("asm/nonmatchings/sr2/game/monster/sluagh", SLUAGH_DamageEffect);
 
 // /* 0018a900 00000008 */ void SLUAGH_PerFrameDamageEffect(/* a0 4 */ Instance *instance) {}
-void SLUAGH_PerFrameDamageEffect(void) {
+void SLUAGH_PerFrameDamageEffect(Instance *instance) {
 }
 
 // /* 0018a908 00000334 */ int32 SLUAGH_BehaviorStack(/* s1 17 */ Instance *instance, /* a1 5 */ int32 *curr) {

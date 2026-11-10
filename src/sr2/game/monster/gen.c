@@ -2,12 +2,7 @@
 /* .text 0x00194338, .data 0x002A5FB8 */
 /* Code from other files was inlined here: math3d.h */
 
-#include "common.h"
-
-/* Globals of this unit (STABS). Their storage is still in asm/data, hence extern. */
-/* data 2a5fb8 */ extern MonsterStateChoice GENERATOR_StateChoiceTable[0];
-/* data 2a5fe0 */ extern MonsterBehaviorChoice GENERATOR_BehaviorChoiceTable[0];
-/* data 2a5ff8 */ extern MonsterFunctionTable GENERATOR_FunctionTable;
+#include "monster/gen.h"
 
 // /* 00194338 00000058 */ void GENERATOR_Init(/* a0 4 */ Instance *instance) {
 //     /* a3 7 */ MonsterVars *mv;

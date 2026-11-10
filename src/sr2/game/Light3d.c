@@ -2,12 +2,7 @@
 /* .text 0x0013F110, .data 0x0025B280 */
 /* Code from other files was inlined here: /sr2/game/ps2/transform.h, collide.h, fx.h, math3d.h */
 
-#include "common.h"
-
-/* Globals of this unit (STABS). Their storage is still in asm/data, hence extern. */
-/* data 25b280 */ extern LightInstance gLightInstances[3];
-/* data 25b37c */ extern int NumLightInstances;
-/* data 25b380 */ extern LightGroup default_lightgroup;
+#include "Light3d.h"
 
 // /* 0013f110 0000001c */ void LIGHT_SetInstanceLightGroupWithStream(/* a0 4 */ Instance *instance, /* a1 5 */ int streamId, /* a2 6 */ int lightgroup) {}
 INCLUDE_ASM("asm/nonmatchings/sr2/game/Light3d", LIGHT_SetInstanceLightGroupWithStream);
@@ -169,7 +164,7 @@ INCLUDE_ASM("asm/nonmatchings/sr2/game/Light3d", LIGHT_GetAmbient);
 INCLUDE_ASM("asm/nonmatchings/sr2/game/Light3d", LIGHT_CalcLightValue);
 
 // /* 00140618 00000008 */ void LIGHT_SetLightMatrix0(/* a0 4 */ GameTracker *gameTracker) {}
-void LIGHT_SetLightMatrix0(void) {
+void LIGHT_SetLightMatrix0(GameTracker *gameTracker) {
 }
 
 // /* 00140620 00000258 */ void LIGHT_DrawShadow(/* s0 16 */ float *wcTransform[4], /* s1 17 */ Instance *instance) {
