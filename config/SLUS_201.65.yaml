@@ -25,7 +25,7 @@ options:
   rodata_string_guesser_level: 0 # improve string detection
   suggestion_rodata_section_start: True
   pair_rodata_to_text: False
-  migrate_rodata_to_functions: True
+  migrate_rodata_to_functions: False
 
   # Auto-generate undefined functions and symbols
   create_undefined_funcs_auto: True
@@ -44,7 +44,8 @@ options:
   auto_link_sections: [".rodata", ".data", ".bss"]
 
   # Linker script options
-  subalign: 8
+  # Subalign is disabled, configure.py handles boundary alignment for objects instead
+  subalign: null
 
 segments:
   - [0x0, databin, elf_header]
@@ -64,14 +65,14 @@ segments:
       - [0x005F18, c, sr2/game/sound/music/musscript]     
       - [0x0072A8, c, sr2/game/sound/music/musplay]       
       - [0x007DE0, c, sr2/game/ps2/snd/snd]               
-      - [0x0098D0, asm, sr2/game/ps2/snd/sndstrm] # troubling to turn to C         
+      - [0x0098D0, c, sr2/game/ps2/snd/sndstrm]
       - [0x00AD20, c, sr2/game/ps2/asyncld]               
-      - [0x00BF20, asm, sr2/game/Main] # troubling                      
+      - [0x00BF20, c, sr2/game/Main]
       - [0x00D7F8, c, sr2/game/ps2/psxmath]               
       - [0x00DB98, c, sr2/game/terrain]                   
-      - [0x00F840, asm, sr2/game/normalmask] # troubling               
+      - [0x00F840, c, sr2/game/normalmask]
       - [0x0101C0, c, sr2/game/Camera]                    
-      - [0x019690, asm, sr2/game/collide] # troubling                    
+      - [0x019690, c, sr2/game/collide]
       - [0x021B38, c, sr2/game/debug]   
       # - [0x023CEC, asm, sr2/game/editmenu] (empty)
       # - [0x023CEC, asm, sr2/game/editparticle] (empty)
@@ -83,8 +84,8 @@ segments:
       - [0x026AC8, c, sr2/game/event]                    
       - [0x027FC0, c, sr2/game/font]                     
       - [0x028718, c, sr2/game/ps2/fontsku]              
-      - [0x028AD8, asm, sr2/game/fx] # troubling                         
-      - [0x036930, asm, sr2/game/Gameloop] # troubling                 
+      - [0x028AD8, c, sr2/game/fx]
+      - [0x036930, c, sr2/game/Gameloop]
       - [0x038880, c, sr2/game/ps2/gamepad]              
       - [0x039708, c, sr2/game/Generic]                  
       - [0x039BC0, c, sr2/game/glyph]                    
@@ -96,10 +97,10 @@ segments:
       - [0x042878, c, sr2/game/MATH3D]                   
       - [0x044490, c, sr2/game/MEMPACK]                  
       - [0x044A10, c, sr2/game/OBTABLE]            
-      # - [0x045260, asm, sr2/game/obtable2] (empty)      
+      # - [0x045260, asm, sr2/game/obtable2] # data-only     
       - [0x045260, c, sr2/game/physics]                 
       - [0x048D10, c, sr2/game/ps2/pipe3d]               
-      - [0x04AEC0, asm, sr2/game/ps2/ps2draw] # troubling               
+      - [0x04AEC0, c, sr2/game/ps2/ps2draw]
       - [0x0501D0, c, sr2/game/ps2/ps2fxdraw]            
       - [0x054F10, c, sr2/game/Player]                   
       - [0x0550D8, c, sr2/game/razcntrl]                 
@@ -108,10 +109,10 @@ segments:
       - [0x056FB0, c, sr2/game/Script]                   
       - [0x057E50, c, sr2/game/Signal]                   
       - [0x058B28, c, sr2/game/sound/Sound]              
-      - [0x05BBD8, asm, sr2/game/SPLINE]                   
+      - [0x05BBD8, c, sr2/game/SPLINE]
       - [0x05D7D0, c, sr2/game/state]                    
-      - [0x060420, asm, sr2/game/stream]          
-      # - [0x063F50, asm, sr2/game/ps2/TABLES] (empty)         
+      - [0x060420, c, sr2/game/stream]
+      # - [0x063F50, asm, sr2/game/TABLES] # data-only        
       - [0x063F50, c, sr2/game/ps2/timer]             
       - [0x0640E8, c, sr2/game/VM]                       
       - [0x064C30, c, sr2/game/ps2/vram]                 
@@ -122,14 +123,14 @@ segments:
       - [0x06B8D8, c, sr2/game/load3d]                   
       - [0x06C528, c, sr2/game/morph]   
       # - [0x06E15C, asm, sr2/game/fxdraw] (empty except for 4 padding bytes)             
-      - [0x06E160, asm, sr2/game/spiral] # troubling                   
-      - [0x06F4A8, asm, sr2/game/map] # troubling                  
+      - [0x06E160, c, sr2/game/spiral]
+      - [0x06F4A8, c, sr2/game/map]
       - [0x06FAA8, c, sr2/game/weather]                  
       - [0x06FE60, c, sr2/game/monster/ambient]          
       - [0x072DD8, c, sr2/game/monster/missile]          
       - [0x073110, c, sr2/game/monster/monapi]           
       - [0x075688, c, sr2/game/monster/monlib]           
-      - [0x080A48, asm, sr2/game/monster/monsense] # troubling   
+      - [0x080A48, c, sr2/game/monster/monsense]
       - [0x082A00, c, sr2/game/monster/monster]          
       - [0x08A1E0, c, sr2/game/monster/montable]         
       - [0x08A4C0, c, sr2/game/monster/monnav]           
@@ -139,7 +140,7 @@ segments:
       - [0x08F3C0, c, sr2/game/monster/monsterb]         
       - [0x091830, c, sr2/game/monster/sentryi]          
       - [0x093018, c, sr2/game/monster/shades]       
-      # - [0x0944C8, asm, sr2/game/monster/vhdog] (empty) 
+      # - [0x0944C8, asm, sr2/game/monster/vhdog] # data-only
       - [0x0944C8, c, sr2/game/monster/sarafan]         
       - [0x0945A8, c, sr2/game/monster/demon]            
       - [0x095338, c, sr2/game/monster/gen]              
@@ -155,7 +156,7 @@ segments:
       - [0x09E808, c, sr2/game/raziel/raziel]            
       - [0x0C23D8, c, sr2/game/undrwrld]                 
       - [0x0C25D0, c, sr2/game/saveinfo]    
-      # - [0x0C3D08, asm, monster/monver] (empty)            
+      # - [0x0C3D08, asm, monster/monver] # data-only           
       - [0x0C3D08, c, sr2/game/local/localstr]           
       - [0x0C3EB8, c, sr2/game/ps2/movie/movie]          
       - [0x0C48C8, c, sr2/game/ps2/movie/audiodec]       
@@ -163,7 +164,7 @@ segments:
       - [0x0C5848, c, sr2/game/ps2/movie/read]           
       - [0x0C5B78, c, sr2/game/ps2/movie/readbuf]        
       - [0x0C5C80, c, sr2/game/ps2/movie/vibuf]          
-      - [0x0C6C38, asm, sr2/game/ps2/movie/videodec] # troubling   
+      - [0x0C6C38, c, sr2/game/ps2/movie/videodec]
       - [0x0C7520, c, sr2/game/ps2/movie/vobuf]          
       - [0x0C7750, c, sr2/game/menu/menu]                
       - [0x0C85D0, c, sr2/game/menu/menuutil]            
@@ -179,10 +180,216 @@ segments:
       - [0x0DA128, asm, sce]                        
       - [0x103B58, textbin, text_nop]
       - [0x103B60, textbin, vutext]
-      - [0x108B80, data, data]
-      - [0x1B2D00, rodata, rodata]
+
+      # .data 
+      - [0x108B80, data, sr2/game/sound/dynsfx]
+      - [0x108D30, data, sr2/game/sound/dynsfxld]
+      - [0x110D40, data, sr2/game/sound/music/musbank]
+      - [0x112F68, data, sr2/game/sound/music/musmidi]
+      - [0x129F68, data, sr2/game/sound/music/musscript]
+      - [0x12A468, data, sr2/game/sound/music/musplay]
+      - [0x12ACC0, data, sr2/game/ps2/snd/snd]
+      - [0x12AE00, data, sr2/game/ps2/snd/sndstrm]
+      - [0x12AE30, data, sr2/game/ps2/asyncld]
+      - [0x12AE60, data, sr2/game/Main]
+      - [0x12B278, data, sr2/game/ps2/psxmath]
+      - [0x12DA90, data, sr2/game/terrain]
+      - [0x12DB20, data, sr2/game/normalmask]
+      - [0x12DB40, data, sr2/game/Camera]
+      - [0x12E660, data, sr2/game/collide]
+      - [0x12E6E8, data, sr2/game/debug]
+      - [0x1319E4, data, sr2/game/demo]
+      - [0x131A00, data, sr2/game/ps2/draw]
+      - [0x137A40, data, sr2/game/ps2/drawlist]
+      - [0x157B60, data, sr2/game/event]
+      - [0x157E90, data, sr2/game/font]
+      - [0x157ED0, data, sr2/game/ps2/fontsku]
+      - [0x158C40, data, sr2/game/fx]
+      - [0x15BDC0, data, sr2/game/Gameloop]
+      - [0x15BE88, data, sr2/game/ps2/gamepad]
+      - [0x15BEB0, data, sr2/game/glyph]
+      - [0x15BEC0, data, sr2/game/ps2/handler]
+      - [0x15BF00, data, sr2/game/Instance]
+      - [0x15C280, data, sr2/game/Light3d]
+      - [0x15C400, data, sr2/game/MATH3D]
+      - [0x15C408, data, sr2/game/MEMPACK]
+      - [0x15CB70, data, sr2/game/OBTABLE]
+      - [0x15CC20, data, sr2/game/obtable2] 
+      - [0x15CD1C, data, sr2/game/ps2/pipe3d]
+      - [0x15CD30, data, sr2/game/ps2/ps2draw]
+      - [0x15CD70, data, sr2/game/razcntrl]
+      - [0x15CE88, data, sr2/game/Signal]
+      - [0x15CFF0, data, sr2/game/sound/Sound]
+      - [0x15D278, data, sr2/game/state]
+      - [0x15D298, data, sr2/game/stream]
+      - [0x15D840, data, sr2/game/TABLES] 
+      - [0x15EFE0, data, sr2/game/VM]
+      - [0x15F000, data, sr2/game/ps2/vram]
+      - [0x1A5088, data, sr2/game/mdlview]
+      - [0x1A5280, data, sr2/game/ps2/transform]
+      - [0x1A5400, data, sr2/game/load3d]
+      - [0x1A5430, data, sr2/game/morph]
+      - [0x1A5444, data, sr2/game/spiral]
+      - [0x1A5460, data, sr2/game/map]
+      - [0x1A55A0, data, sr2/game/monster/ambient]
+      - [0x1A5B50, data, sr2/game/monster/monapi]
+      - [0x1A5B58, data, sr2/game/monster/monlib]
+      - [0x1A5B90, data, sr2/game/monster/monsense]
+      - [0x1A5C38, data, sr2/game/monster/montable]
+      - [0x1A64E0, data, sr2/game/monster/monnav]
+      - [0x1A64F0, data, sr2/game/monster/sluagh]
+      - [0x1A6630, data, sr2/game/monster/soul]
+      - [0x1A6818, data, sr2/game/monster/thrall]
+      - [0x1A6998, data, sr2/game/monster/sentryi]
+      - [0x1A6B80, data, sr2/game/monster/shades]
+      - [0x1A6D20, data, sr2/game/monster/vhdog] 
+      - [0x1A6D88, data, sr2/game/monster/sarafan]
+      - [0x1A6E78, data, sr2/game/monster/demon]
+      - [0x1A6FB8, data, sr2/game/monster/gen]
+      - [0x1A7030, data, sr2/game/g2/InstncG2]
+      - [0x1A7040, data, sr2/game/ps2/ps2_g2/RenderRA]
+      - [0x1A70D0, data, sr2/game/raziel/raziel]
+      - [0x1A7158, data, sr2/game/saveinfo]
+      - [0x1A7188, data, sr2/game/monster/monver] 
+      - [0x1A7198, data, sr2/game/local/localstr]
+      - [0x1A71E0, data, sr2/game/ps2/movie/movie]
+      - [0x1A7560, data, sr2/game/ps2/movie/disp]
+      - [0x1A7578, data, sr2/game/menu/menu]
+      - [0x1A75B8, data, sr2/game/menu/menuutil]
+      - [0x1A75E8, data, sr2/game/ps2/memcard/memcard]
+      - [0x1A76B0, data, sr2/game/objects/objects]
+      - [0x1A76D0, data, sr2/game/ps2/ps2dma]
+      - [0x1A7710, data, sr2/game/ps2/stencilbuffer]
+      - [0x1A7720, data, sr2/game/ps2/ps2shadow]
+      - [0x1A7734, data, sce]
+
+      # .rodata
+      - [0x1B2D00, rodata, sr2/game/sound/dynsfx]
+      - [0x1B2E40, rodata, sr2/game/sound/dynsfxld]
+      - [0x1B2E98, rodata, sr2/game/sound/music/musbank]
+      - [0x1B2F50, rodata, sr2/game/sound/music/musmidi]
+      - [0x1B2FD8, rodata, sr2/game/sound/music/musscript]
+      - [0x1B3080, rodata, sr2/game/sound/music/musplay]
+      - [0x1B30F8, rodata, sr2/game/ps2/snd/snd]
+      - [0x1B3430, rodata, sr2/game/ps2/snd/sndstrm]
+      - [0x1B3640, rodata, sr2/game/ps2/asyncld]
+      - [0x1B3800, rodata, sr2/game/Main]
+      - [0x1B3C10, rodata, sr2/game/normalmask]
+      - [0x1B3C20, rodata, sr2/game/Camera]
+      - [0x1B3CA0, rodata, sr2/game/debug]
+      - [0x1B5500, rodata, sr2/game/demo]
+      - [0x1B5540, rodata, sr2/game/event]
+      - [0x1B55D0, rodata, sr2/game/ps2/fontsku]
+      - [0x1B55E0, rodata, sr2/game/fx]
+      - [0x1B5818, rodata, sr2/game/Gameloop]
+      - [0x1B58B0, rodata, sr2/game/ps2/gamepad]
+      - [0x1B58F0, rodata, sr2/game/Generic]
+      - [0x1B5950, rodata, sr2/game/glyph]
+      - [0x1B5978, rodata, sr2/game/gxassert]
+      - [0x1B5998, rodata, sr2/game/ps2/handler]
+      - [0x1B5BB8, rodata, sr2/game/Instance]
+      - [0x1B5D60, rodata, sr2/game/MEMPACK]
+      - [0x1B5DB0, rodata, sr2/game/OBTABLE]
+      - [0x1B6020, rodata, sr2/game/obtable2]
+      - [0x1B6070, rodata, sr2/game/physics]
+      - [0x1B6080, rodata, sr2/game/ps2/ps2draw]
+      - [0x1B6140, rodata, sr2/game/reaver]
+      - [0x1B61B0, rodata, sr2/game/RESOLVE]
+      - [0x1B6210, rodata, sr2/game/Script]
+      - [0x1B6230, rodata, sr2/game/Signal]
+      - [0x1B6250, rodata, sr2/game/sound/Sound]
+      - [0x1B6360, rodata, sr2/game/state]
+      - [0x1B6378, rodata, sr2/game/stream]
+      - [0x1B6740, rodata, sr2/game/ps2/vram]
+      - [0x1B67B8, rodata, sr2/game/mdlview]
+      - [0x1B6BE0, rodata, sr2/game/reloc]
+      - [0x1B6CC0, rodata, sr2/game/load3d]
+      - [0x1B6E00, rodata, sr2/game/spiral]
+      - [0x1B6E18, rodata, sr2/game/map]
+      - [0x1B6E40, rodata, sr2/game/monster/monapi]
+      - [0x1B7040, rodata, sr2/game/monster/monlib]
+      - [0x1B75F0, rodata, sr2/game/monster/monster]
+      - [0x1B7720, rodata, sr2/game/monster/sluagh]
+      - [0x1B7730, rodata, sr2/game/monster/monsterb]
+      - [0x1B7780, rodata, sr2/game/g2/InstncG2]
+      - [0x1B77A8, rodata, sr2/game/g2/QuatG2]
+      - [0x1B77B8, rodata, sr2/game/ps2/ps2_g2/MainVM]
+      - [0x1B7B10, rodata, sr2/game/ps2/ps2_g2/RenderRA]
+      - [0x1B7B20, rodata, sr2/game/raziel/raziel]
+      - [0x1B8208, rodata, sr2/game/undrwrld]
+      - [0x1B8210, rodata, sr2/game/saveinfo]
+      - [0x1B8300, rodata, sr2/game/local/localstr]
+      - [0x1B83A8, rodata, sr2/game/ps2/movie/movie]
+      - [0x1B84C0, rodata, sr2/game/ps2/movie/audiodec]
+      - [0x1B86C0, rodata, sr2/game/ps2/movie/disp]
+      - [0x1B86E0, rodata, sr2/game/ps2/movie/read]
+      - [0x1B86F8, rodata, sr2/game/ps2/movie/vibuf]
+      - [0x1B8710, rodata, sr2/game/ps2/movie/videodec]
+      - [0x1B8780, rodata, sr2/game/ps2/movie/vobuf]
+      - [0x1B87A8, rodata, sr2/game/menu/menu]
+      - [0x1B87C0, rodata, sr2/game/menu/menudefs]
+      - [0x1B8890, rodata, sr2/game/ps2/memcard/memcard]
+      - [0x1B8C40, rodata, sr2/game/objects/objects]
+      - [0x1B97E0, rodata, sr2/game/ps2/iopload]
+      - [0x1B9968, rodata, sr2/game/ps2/iopmem]
+      - [0x1B9A00, rodata, sr2/game/ps2/ps2shadow]
+      - [0x1B9A10, rodata, sce]
+
       - [0x1BD1F8, rodatabin, ctors_dtors_frames]
-      - { start: 0x1BD240, type: bss, vram: 0x002BC240, name: bss }
+
+      # .bss
+      - { start: 0x1BD240, type: bss, vram: 0x002BC240, name: sce/crt0 }
+      - { start: 0x1BD240, type: bss, vram: 0x002BC388, name: sr2/game/sound/dynsfx }
+      - { start: 0x1BD240, type: bss, vram: 0x002BDA48, name: sr2/game/sound/dynsfxld }
+      - { start: 0x1BD240, type: bss, vram: 0x002BDA50, name: sr2/game/sound/music/musbank }
+      - { start: 0x1BD240, type: bss, vram: 0x002BF220, name: sr2/game/sound/music/musscript }
+      - { start: 0x1BD240, type: bss, vram: 0x002BF340, name: sr2/game/ps2/snd/snd }
+      - { start: 0x1BD240, type: bss, vram: 0x002E0F50, name: sr2/game/ps2/snd/sndstrm }
+      - { start: 0x1BD240, type: bss, vram: 0x002E17C0, name: sr2/game/ps2/asyncld }
+      - { start: 0x1BD240, type: bss, vram: 0x0030DC00, name: sr2/game/Main }
+      - { start: 0x1BD240, type: bss, vram: 0x0030DE30, name: sr2/game/normalmask }
+      - { start: 0x1BD240, type: bss, vram: 0x0030DFC0, name: sr2/game/Camera }
+      - { start: 0x1BD240, type: bss, vram: 0x0030E0F0, name: sr2/game/demo }
+      - { start: 0x1BD240, type: bss, vram: 0x0030E100, name: sr2/game/ps2/drawlist }
+      - { start: 0x1BD240, type: bss, vram: 0x0068E120, name: sr2/game/event }
+      - { start: 0x1BD240, type: bss, vram: 0x0068E1A8, name: sr2/game/font }
+      - { start: 0x1BD240, type: bss, vram: 0x006925AC, name: sr2/game/ps2/fontsku }
+      - { start: 0x1BD240, type: bss, vram: 0x006925B8, name: sr2/game/fx }
+      - { start: 0x1BD240, type: bss, vram: 0x006925C8, name: sr2/game/Gameloop }
+      - { start: 0x1BD240, type: bss, vram: 0x00692600, name: sr2/game/ps2/gamepad }
+      - { start: 0x1BD240, type: bss, vram: 0x006928E0, name: sr2/game/glyph }
+      - { start: 0x1BD240, type: bss, vram: 0x00692940, name: sr2/game/MEMPACK }
+      - { start: 0x1BD240, type: bss, vram: 0x01E92980, name: sr2/game/physics }
+      - { start: 0x1BD240, type: bss, vram: 0x01E92A68, name: sr2/game/razcntrl }
+      - { start: 0x1BD240, type: bss, vram: 0x01E92B14, name: sr2/game/reaver }
+      - { start: 0x1BD240, type: bss, vram: 0x01E92B18, name: sr2/game/Signal }
+      - { start: 0x1BD240, type: bss, vram: 0x01E92B98, name: sr2/game/sound/Sound }
+      - { start: 0x1BD240, type: bss, vram: 0x01E92BB0, name: sr2/game/SPLINE }
+      - { start: 0x1BD240, type: bss, vram: 0x01E92C40, name: sr2/game/state }
+      - { start: 0x1BD240, type: bss, vram: 0x01E94C40, name: sr2/game/ps2/timer }
+      - { start: 0x1BD240, type: bss, vram: 0x01E94C50, name: sr2/game/ps2/vram }
+      - { start: 0x1BD240, type: bss, vram: 0x01E94C60, name: sr2/game/mdlview }
+      - { start: 0x1BD240, type: bss, vram: 0x01E94CC8, name: sr2/game/reloc }
+      - { start: 0x1BD240, type: bss, vram: 0x01E94D50, name: sr2/game/load3d }
+      - { start: 0x1BD240, type: bss, vram: 0x01E96860, name: sr2/game/spiral }
+      - { start: 0x1BD240, type: bss, vram: 0x01E97190, name: sr2/game/map }
+      - { start: 0x1BD240, type: bss, vram: 0x01E97198, name: sr2/game/g2/AnimG2 }
+      - { start: 0x1BD240, type: bss, vram: 0x01E97200, name: sr2/game/g2/InstncG2 }
+      - { start: 0x1BD240, type: bss, vram: 0x01E99200, name: sr2/game/ps2/ps2_g2/MainVM }
+      - { start: 0x1BD240, type: bss, vram: 0x01E99240, name: sr2/game/ps2/ps2_g2/RenderRA }
+      - { start: 0x1BD240, type: bss, vram: 0x01E999B0, name: sr2/game/raziel/control }
+      - { start: 0x1BD240, type: bss, vram: 0x01E999C0, name: sr2/game/raziel/raziel }
+      - { start: 0x1BD240, type: bss, vram: 0x01E9A8B0, name: sr2/game/saveinfo }
+      - { start: 0x1BD240, type: bss, vram: 0x01E9AAD0, name: sr2/game/local/localstr }
+      - { start: 0x1BD240, type: bss, vram: 0x01E9AAD4, name: sr2/game/ps2/movie/movie }
+      - { start: 0x1BD240, type: bss, vram: 0x01E9AB00, name: sr2/game/ps2/movie/audiodec }
+      - { start: 0x1BD240, type: bss, vram: 0x01E9B300, name: sr2/game/ps2/movie/videodec }
+      - { start: 0x1BD240, type: bss, vram: 0x01E9B304, name: sr2/game/menu/menudefs }
+      - { start: 0x1BD240, type: bss, vram: 0x01E9B308, name: sr2/game/ps2/memcard/memcard }
+      - { start: 0x1BD240, type: bss, vram: 0x01E9B320, name: sr2/game/ps2/ps2dma }
+      - { start: 0x1BD240, type: bss, vram: 0x01E9B340, name: sr2/game/ps2/iopload }
+      - { start: 0x1BD240, type: bss, vram: 0x01E9C9D0, name: sr2/game/ps2/iopmem }
+      - { start: 0x1BD240, type: bss, vram: 0x01E9CA40, name: sce }
 
   - name: elf_tail
     type: databin
