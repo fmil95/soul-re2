@@ -34,7 +34,7 @@ G_OVERRIDES = {
 }
 
 O_OVERRIDES = {
-    
+
 }
 
 SDK_ROOT = "include/sce/usr/local/sce"
@@ -102,6 +102,26 @@ compiler_type = "gcc"
 [decompme.compilers]
 "tools/build/cc/gcc/gcc" = "ee-gcc2.96"
 """)
+
+ASM_SECTIONS = (".text", ".data", ".rodata", ".bss")
+
+def asm_section_alignment_flags(seg) -> str:
+    """
+    objcopy flags giving an object assembled by mips-linux-gnu-as the alignment
+    its segment needs. GAS forces 16-byte alignment on .text/.data/.rodata/.bss,
+    and the original link has files starting on 4/8-byte boundaries, so the
+    segment's own section gets the largest power of two (up to 16) dividing its
+    start address, and its other (empty) sections get 1 so they never pad.
+    """
+    own = seg.get_linker_section()
+    start = seg.vram_start
+    align = 16
+    if isinstance(start, int) and start > 0:
+        align = min(16, start & -start)
+    flags = []
+    for sect in ASM_SECTIONS:
+        flags.append(f"--set-section-alignment {sect}={align if sect == own else 1}")
+    return " ".join(flags)
 
 #MARK: Build
 def build_stuff(linker_entries: List[LinkerEntry], skip_checksum=False, objects_only=False, dual_objects=False):
@@ -241,18 +261,13 @@ def build_stuff(linker_entries: List[LinkerEntry], skip_checksum=False, objects_
 
     ld_args = "-EL -T config/undefined_syms_auto.txt -T config/undefined_funcs_auto.txt -T config/undefined_syms.txt -Map $mapfile -T $in -o $out"
 
+    # mips-linux-gnu-as aligns every section to 16 bytes; $alignflags resets them
+    # so each object lands exactly at its original address (see asm_section_alignment_flags)
     ninja.rule(
         "as",
         description="as $in",
-        command=f"cpp {COMMON_INCLUDES} $in -o  - | {cross}as -no-pad-sections -EL -march=5900 -mabi=eabi -Iinclude -o $out",
+        command=f"cpp {COMMON_INCLUDES} $in -o  - | {cross}as -no-pad-sections -EL -march=5900 -mabi=eabi -Iinclude -o $out && {cross}objcopy $alignflags $out",
     )
-
-    # this is the original cc rule, but the larger one below is used due to problems with WINE
-    #ninja.rule(
-        #"cc",
-        #description="cc $in",
-        #command=f"{COMPILE_CMD} $cflags -o $out && {cross}strip $out -N dummy-symbol-name",
-    #)
 
     AS_EE = f"{TOOLS_DIR}/cc/lib/gcc-lib/ee/2.95.2/as.exe"
     WINE_RUN = f"{WINE_ENV} {WINE}" if sys.platform.startswith("linux") else ""
@@ -263,10 +278,10 @@ def build_stuff(linker_entries: List[LinkerEntry], skip_checksum=False, objects_
         command=(
             f"rm -f $out $out.s; "
             f"{CC_DIR}/ee-gcc.exe -S {COMMON_INCLUDES} {COMMON_COMPILE_FLAGS} $oflag $gflag $in $cflags -o $out.s; "
-            f"{WINE_RUN} {CC_DIR}/ee-gcc.exe -S {COMMON_INCLUDES} {COMMON_COMPILE_FLAGS} $oflag $in $cflags -o $out.s; "
+            f"{WINE_RUN} {CC_DIR}/ee-gcc.exe -S {COMMON_INCLUDES} {COMMON_COMPILE_FLAGS} $oflag $gflag $in $cflags -o $out.s; "
             f"wineserver -w; "
             f"{AS_EE} -O2 -mabi=eabi $gflag -o $out $out.s; "
-            f"{WINE_RUN} {AS_EE} -G4 -O2 -mabi=eabi -o $out $out.s; "
+            f"{WINE_RUN} {AS_EE} $gflag -O2 -mabi=eabi -o $out $out.s; "
             f"wineserver -w; "
             f"test -s $out && {cross}strip $out -N dummy-symbol-name"
         ),
@@ -301,17 +316,19 @@ def build_stuff(linker_entries: List[LinkerEntry], skip_checksum=False, objects_
         if entry.object_path is None:
             continue
 
+        as_vars = {"alignflags": asm_section_alignment_flags(seg)}
+
         if isinstance(seg, splat.segtypes.common.asm.CommonSegAsm) or isinstance(
             seg, splat.segtypes.common.data.CommonSegData
         ):
             if dual_objects:
-                build(entry.object_path, entry.src_paths, "as", out_dir="obj/target", collect_objdiff=True, orig_entry=entry)
-                build(entry.object_path, entry.src_paths, "as", out_dir="obj/current", extra_flags="-DSKIP_ASM")
+                build(entry.object_path, entry.src_paths, "as", variables=as_vars, out_dir="obj/target", collect_objdiff=True, orig_entry=entry)
+                build(entry.object_path, entry.src_paths, "as", variables=as_vars, out_dir="obj/current", extra_flags="-DSKIP_ASM")
             else:
-                build(entry.object_path, entry.src_paths, "as")
+                build(entry.object_path, entry.src_paths, "as", variables=as_vars)
         elif isinstance(seg, splat.segtypes.common.c.CommonSegC):
-            # Find the appropriate -G flag for this source file, defaulting to -G4
-            gflag = "-G4"
+            # Find the appropriate -G flag for this source file, defaulting to -G0
+            gflag = "-G0"
             for src in entry.src_paths:
                 path_obj = Path(src)
                 if path_obj.name in G_OVERRIDES:
@@ -341,28 +358,28 @@ def build_stuff(linker_entries: List[LinkerEntry], skip_checksum=False, objects_
                 build(entry.object_path, entry.src_paths, "cc", variables=variables)
         elif isinstance(seg, splat.segtypes.common.databin.CommonSegDatabin):
             if dual_objects:
-                build(entry.object_path, entry.src_paths, "as", out_dir="obj/target", collect_objdiff=True, orig_entry=entry)
-                build(entry.object_path, entry.src_paths, "as", out_dir="obj/current", extra_flags="-DSKIP_ASM")
+                build(entry.object_path, entry.src_paths, "as", variables=as_vars, out_dir="obj/target", collect_objdiff=True, orig_entry=entry)
+                build(entry.object_path, entry.src_paths, "as", variables=as_vars, out_dir="obj/current", extra_flags="-DSKIP_ASM")
             else:
-                build(entry.object_path, entry.src_paths, "as")
+                build(entry.object_path, entry.src_paths, "as", variables=as_vars)
         elif isinstance(seg, splat.segtypes.common.rodatabin.CommonSegRodatabin):
             if dual_objects:
-                build(entry.object_path, entry.src_paths, "as", out_dir="obj/target", collect_objdiff=True, orig_entry=entry)
-                build(entry.object_path, entry.src_paths, "as", out_dir="obj/current", extra_flags="-DSKIP_ASM")
+                build(entry.object_path, entry.src_paths, "as", variables=as_vars, out_dir="obj/target", collect_objdiff=True, orig_entry=entry)
+                build(entry.object_path, entry.src_paths, "as", variables=as_vars, out_dir="obj/current", extra_flags="-DSKIP_ASM")
             else:
-                build(entry.object_path, entry.src_paths, "as")
+                build(entry.object_path, entry.src_paths, "as", variables=as_vars)
         elif isinstance(seg, splat.segtypes.common.textbin.CommonSegTextbin):
             if dual_objects:
-                build(entry.object_path, entry.src_paths, "as", out_dir="obj/target", collect_objdiff=True, orig_entry=entry)
-                build(entry.object_path, entry.src_paths, "as", out_dir="obj/current", extra_flags="-DSKIP_ASM")
+                build(entry.object_path, entry.src_paths, "as", variables=as_vars, out_dir="obj/target", collect_objdiff=True, orig_entry=entry)
+                build(entry.object_path, entry.src_paths, "as", variables=as_vars, out_dir="obj/current", extra_flags="-DSKIP_ASM")
             else:
-                build(entry.object_path, entry.src_paths, "as")
+                build(entry.object_path, entry.src_paths, "as", variables=as_vars)
         elif isinstance(seg, splat.segtypes.common.bin.CommonSegBin):
             if dual_objects:
-                build(entry.object_path, entry.src_paths, "as", out_dir="obj/target", collect_objdiff=True, orig_entry=entry)
-                build(entry.object_path, entry.src_paths, "as", out_dir="obj/current", extra_flags="-DSKIP_ASM")
+                build(entry.object_path, entry.src_paths, "as", variables=as_vars, out_dir="obj/target", collect_objdiff=True, orig_entry=entry)
+                build(entry.object_path, entry.src_paths, "as", variables=as_vars, out_dir="obj/current", extra_flags="-DSKIP_ASM")
             else:
-                build(entry.object_path, entry.src_paths, "as")
+                build(entry.object_path, entry.src_paths, "as", variables=as_vars)
         else:
             print(f"ERROR: Unsupported build segment type {seg.type}")
             sys.exit(1)
@@ -426,9 +443,7 @@ def build_stuff(linker_entries: List[LinkerEntry], skip_checksum=False, objects_
         print("Skipping checksum step")
 
 #MARK: Short loop fix
-# The old EE assembler refuses short backward loops inside .set noreorder.
-# Rewrite only those branches as raw words; the bytes are identical.
-SHORT_LOOP_MAX_BYTES = 0x20  # backward branches within 8 instructions
+SHORT_LOOP_MAX_BYTES = None
 
 BRANCH_RE = re.compile(
     r"^(?P<pre>\s*/\* \S+ (?P<addr>[0-9A-F]{8}) "
@@ -439,13 +454,16 @@ BRANCH_RE = re.compile(
 
 def replace_instructions_with_opcodes(asm_folder: Path) -> None:
     """
-    Replace short backward-loop branches with raw opcodes so the EE assembler accepts them.
+    Replace backward branches with raw opcodes so the EE assembler's short-loop
+    workaround cannot pad them.
     """
     nm_folder = ROOT / asm_folder / "nonmatchings"
 
     def fix(m):
         addr, tgt = int(m["addr"], 16), int(m["tgt"], 16)
-        if not (0 <= addr - tgt <= SHORT_LOOP_MAX_BYTES):
+        if addr < tgt:
+            return m[0]
+        if SHORT_LOOP_MAX_BYTES is not None and addr - tgt > SHORT_LOOP_MAX_BYTES:
             return m[0]
         word = m["b4"] + m["b3"] + m["b2"] + m["b1"]    # little-endian bytes -> word
         ins = re.sub(r"\s*/\*.*?\*/", "", m["ins"]).rstrip()    # drop trailing comments
